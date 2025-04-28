@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Premium Features - Personal Custom Website Service</title>
+  <meta name="description" content="Explore our premium plans for advanced website customization, unlimited edits, and priority support.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: 'Inter', sans-serif; background: #f5f5f5; margin: 0; }
+    .glass { background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.3); }
+    .card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .card:hover { transform: scale(1.02); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); }
+    .parallax { background-attachment: fixed; background-size: cover; background-position: center; }
+    .menu { transition: transform 0.3s ease-in-out; }
+    .menu-open { transform: translateX(0); }
+    .hamburger span { transition: all 0.3s ease; }
+    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(7px, -7px); }
+    section { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    section.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+  <!-- iOS-Style Menu -->
+  <div class="fixed top-0 left-0 w-full z-50">
+    <div class="glass p-4 flex justify-between items-center">
+      <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMjAgNEMxMC42MDg2IDQgNCAxMC42MDg2IDQgMjBDNCAyOS4zOTE0IDEwLjYwODY Airways 36 20 36C29.3914 36 36 29.3914 36 20C36 10.6086 29.3914 4 20 4Z" fill="#3B87FC"/><path d="M18.5 22H24.5V28H18.5V22Z" fill="#FFFFFF"/><path d="M18.5 12H14.5V18H18.5V12Z" fill="#FFFFFF"/><path d="M24.5 18H28.5V12H24.5V18Z" fill="#FFFFFF"/></svg>" alt="Logo" class="h-10">
+      <div class="hamburger cursor-pointer" onclick="toggleMenu()">
+        <span class="block w-6 h-0.5 bg-gray-900 mb-1.5"></span>
+        <span class="block w-6 h-0.5 bg-gray-900 mb-1.5"></span>
+        <span class="block w-6 h-0.5 bg-gray-900"></span>
+      </div>
+    </div>
+    <div id="menu" class="menu fixed top-0 right-0 h-full w-64 glass transform translate-x-full">
+      <ul class="p-6 space-y-4 mt-16">
+        <li><a href="index.html" class="text-gray-900 hover:text-blue-600" onclick="toggleMenu()">Home</a></li>
+        <li><a href="premium.html" class="text-gray-900 hover:text-blue-600" onclick="toggleMenu()">Premium Features</a></li>
+        <li><a href="index.html#form" class="text-gray-900 hover:text-blue-600" onclick="toggleMenu()">Get Started</a></li>
+        <li><a href="index.html#contact" class="text-gray-900 hover:text-blue-600" onclick="toggleMenu()">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Premium Features Section -->
+  <section class="py-16 px-4 parallax" style="background-image: url('https://images.unsplash.com/photo-1614850715649-1d0106293bd1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">Premium Features</h2>
+      <p class="text-gray-600 mb-8 text-center">Upgrade to premium for advanced customization and exclusive benefits. Pricing is based on your website’s size:</p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white p-6 rounded-2xl shadow-lg glass">
+          <h3 class="text-xl font-semibold text-gray-900 mb-2">Small Website</h3>
+          <p class="text-gray-600">Perfect for portfolios or personal pages. Affordable pricing.</p>
+        </div>
+        <div class="bg-white p-6 rounded-2xl shadow-lg glass">
+          <h3 class="text-xl font-semibold text-gray-900 mb-2">Medium Website</h3>
+          <p class="text-gray-600">Ideal for blogs or small businesses. Balanced features.</p>
+        </div>
+        <div class="bg-white p-6 rounded-2xl shadow-lg glass">
+          <h3 class="text-xl font-semibold text-gray-900 mb-2">Large Website</h3>
+          <p class="text-gray-600">For complex sites with advanced functionality.</p>
+        </div>
+      </div>
+      <div class="mt-8 text-center">
+        <h3 class="text-xl font-semibold text-gray-900 mb-4">Premium Benefits</h3>
+        <ul class="text-gray-600 space-y-2">
+          <li>Advanced Customization Options</li>
+          <li>Unlimited Edits</li>
+          <li>Priority Support</li>
+          <li>Exclusive Design Features</li>
+        </ul>
+        <button class="mt-6 bg-gray-400 text-white py-3 px-6 rounded-full shadow-lg glass cursor-not-allowed" onclick="showNotice()">Buy Now</button>
+        <div id="notice" class="hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+          <div class="bg-white p-6 rounded-2xl glass text-center">
+            <p class="text-gray-900 font-semibold">Under Development</p>
+            <p class="text-gray-600 mt-2">Premium features are coming soon!</p>
+            <button class="mt-4 bg-blue-600 text-white py-2 px-4 rounded-full" onclick="hideNotice()">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-8 px-4 bg-gray-100 text-center">
+    <p class="text-gray-600">© Your Agency Name 2025 – Affordable Personal Custom Website Development</p>
+  </footer>
+
+  <script>
+    // Menu Toggle
+    function toggleMenu() {
+      const menu = document.getElementById('menu');
+      const hamburger = document.querySelector('.hamburger');
+      menu.classList.toggle('menu-open');
+      hamburger.classList.toggle('open');
+    }
+
+    // Premium Notice
+    function showNotice() {
+      document.getElementById('notice').classList.remove('hidden');
+    }
+    function hideNotice() {
+      document.getElementById('notice').classList.add('hidden');
+    }
+
+    // Scroll Reveal Animation (CSS-based for performance)
+    const sections = document.querySelectorAll('section');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1 });
+    sections.forEach(section => observer.observe(section));
+  </script>
+</body>
+  </html>
