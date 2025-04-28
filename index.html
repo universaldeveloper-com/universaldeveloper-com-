@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GitHub Portfolio Website Service</title>
+  <meta name="description" content="Create a professional GitHub portfolio website easily. Fast, affordable, and tailored for you.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@heroicons/react@2.0.18/dist/heroicons-react.js"></script>
+  <script src="https://unpkg.com/framer-motion@10.18.0/dist/framer-motion.js"></script>
+  <script src="https://vincentgarreau.github.io/particles.js/particles.js"></script>
+  <style>
+    body { font-family: 'Inter', sans-serif; background: #fff; }
+    .card { transition: transform 0.3s, box-shadow 0.3s; }
+    .card:hover { transform: scale(1.02); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); }
+    #particles-js { position: absolute; width: 100%; height: 100%; z-index: -1; }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const { useEffect } = React;
+    const { motion } = window.FramerMotion;
+    const { EnvelopeIcon, PhoneIcon, ArrowRightIcon } = window.HeroiconsReact;
+
+    const App = () => {
+      useEffect(() => {
+        window.particlesJS('particles-js', {
+          particles: {
+            number: { value: 50, density: { enable: true, value_area: 800 } },
+            color: { value: '#e5e7eb' },
+            shape: { type: 'circle' },
+            opacity: { value: 0.5, random: true },
+            size: { value: 3, random: true },
+            line_linked: { enable: false },
+            move: { enable: true, speed: 2, direction: 'none', random: true }
+          },
+          interactivity: {
+            events: { onhover: { enable: true, mode: 'repulse' } }
+          }
+        });
+      }, []);
+
+      return (
+        <div>
+          {/* Hero Section */}
+          <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+            <div id="particles-js" className="absolute inset-0"></div>
+            <div className="text-center z-10 px-4">
+              <motion.h1
+                className="text-4xl md:text-6xl font-bold text-gray-900 mb-4"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+              >
+                Create Your Personal GitHub Website
+              </motion.h1>
+              <motion.p
+                className="text-lg md:text-xl text-gray-600 mb-8"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+              >
+                Stand out with a professional portfolio built just for you. Fast, Simple, Affordable.
+              </motion.p>
+              <motion.a
+                href="#form"
+                className="inline-block bg-blue-600 text-white py-3 px-6 rounded-full shadow-lg hover:bg-blue-700"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                whileHover={{ scale: 1.05 }}
+              >
+                Get Started
+              </motion.a>
+            </div>
+          </section>
+
+          {/* About Service Section */}
+          <section className="py-16 px-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">Why Choose Us?</h2>
+            <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+              {[
+                { title: 'Submit Your Data Easily', desc: 'Fill out a simple form with your GitHub details.' },
+                { title: 'See Your Live Website', desc: 'Get a preview link to your portfolio.' },
+                { title: 'Pay and Own It', desc: 'Secure payment and full ownership.' },
+                { title: 'Easy Edits After Payment', desc: 'Request changes anytime.' }
+              ].map((feature, index) => (
+                <motion.div
+                  key={index}
+                  className="bg-white p-6 rounded-2xl shadow-lg card"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                >
+                  <h3 className="text-xl font-semibold text-gray-900 mb-2">{feature.title}</h3>
+                  <p className="text-gray-600">{feature.desc}</p>
+                </motion.div>
+              ))}
+            </div>
+          </section>
+
+          {/* How It Works Section */}
+          <section className="py-16 px-4 bg-gray-50">
+            <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">How It Works</h2>
+            <div className="max-w-3xl mx-auto">
+              {[
+                { step: 'Step 1', title: 'Fill the Form', desc: 'Provide your GitHub details.' },
+                { step: 'Step 2', title: 'Website Ready & Link Shared', desc: 'Preview your live site.' },
+                { step: 'Step 3', title: 'Pay Securely', desc: 'Complete payment to own it.' },
+                { step: 'Step 4', title: 'Final Edits + Delivery', desc: 'Request edits and get the final site.' }
+              ].map((step, index) => (
+                <motion.div
+                  key={index}
+                  className="flex items-start mb-8"
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.2 }}
+                >
+                  <div className="flex-shrink-0 w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center mr-4">
+                    {index + 1}
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold text-gray-900">{step.title}</h3>
+                    <p className="text-gray-600">{step.desc}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </section>
+
+          {/* Form Section */}
+          <section id="form" className="py-16 px-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">Get Your Website Now</h2>
+            <motion.div
+              className="max-w-3xl mx-auto bg-white p-8 rounded-2xl shadow-lg"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <p className="text-gray-600 mb-4 text-center">Fill out our simple form to start building your portfolio.</p>
+              <a
+                href="YOUR_GOOGLE_FORM_LINK"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block text-center bg-blue-600 text-white py-3 px-6 rounded-full shadow-lg hover:bg-blue-700"
+              >
+                Fill Form
+              </a>
+            </motion.div>
+          </section>
+
+          {/* Payment Information Section */}
+          <section className="py-16 px-4 bg-gray-50">
+            <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">Payment Options</h2>
+            <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+              <motion.div
+                className="bg-white p-6 rounded-2xl shadow-lg bg-gradient-to-br from-blue-50 to-white"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">For Indian Clients</h3>
+                <p className="text-gray-600 mb-4">Pay securely via FamPay UPI.</p>
+                <p className="text-gray-600">UPI ID: YOUR_UPI_ID</p>
+                <p className="text-gray-600">Scan the QR code (coming soon).</p>
+              </motion.div>
+              <motion.div
+                className="bg-white p-6 rounded-2xl shadow-lg bg-gradient-to-br from-blue-50 to-white"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+              >
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">For International Clients</h3>
+                <p className="text-gray-600 mb-4">Pay securely via PayPal.</p>
+                <a href="YOUR_PAYPAL_LINK" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+                  Pay with PayPal
+                </a>
+              </motion.div>
+            </div>
+          </section>
+
+          {/* Contact Section */}
+          <section className="py-16 px-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">Contact Us</h2>
+            <motion.div
+              className="max-w-3xl mx-auto text-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <div className="flex justify-center space-x-8 mb-4">
+                <a href="mailto:YOUR_EMAIL" className="text-gray-600 hover:text-blue-600">
+                  <EnvelopeIcon className="w-8 h-8" />
+                </a>
+                <a href="YOUR_WHATSAPP_LINK" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-600">
+                  <PhoneIcon className="w-8 h-8" />
+                </a>
+              </div>
+              <p className="text-gray-600">We reply fast!</p>
+            </motion.div>
+          </section>
+
+          {/* Footer */}
+          <footer className="py-8 px-4 bg-gray-100 text-center">
+            <p className="text-gray-600">© Your Agency Name 2025</p>
+          </footer>
+        </div>
+      );
+    };
+
+    ReactDOM.render(<App />, document.getElementById('root'));
+  </script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</body>
+</html>
