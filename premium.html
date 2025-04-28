@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="theme" class="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,12 +8,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    body { font-family: 'Inter', sans-serif; background: #f5f5f5; margin: 0; }
-    .glass { background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.3); }
+    body { font-family: 'Inter', sans-serif; margin: 0; transition: background-color 0.3s ease; }
+    .light { background: #f5f5f5; color: #111827; }
+    .dark { background: #1f2937; color: #f9fafb; }
+    .light .glass { background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.3); }
+    .dark .glass { background: rgba(31, 41, 55, 0.2); backdrop-filter: blur(10px); border: 1px solid rgba(55, 65, 81, 0.3); }
     .card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
     .card:hover { transform: scale(1.02); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); }
-    .parallax { background-attachment: fixed; background-size: cover; background-position: center; }
-    .menu { transition: transform 0.3s ease-in-out; }
+    .menu { transition: transform 0.3s ease-in-out; z-index: 50; }
     .menu-open { transform: translateX(0); }
     .hamburger span { transition: all 0.3s ease; }
     .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
@@ -21,51 +23,68 @@
     .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(7px, -7px); }
     section { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
     section.visible { opacity: 1; transform: translateY(0); }
+    .light .text-gray-600 { color: #4b5563; }
+    .dark .text-gray-600 { color: #d1d5db; }
+    .light .bg-gray-100 { background: #f3f4f6; }
+    .dark .bg-gray-100 { background: #374151; }
+    .light .bg-gray-50 { background: #f9fafb; }
+    .dark .bg-gray-50 { background: #1f2937; }
+    .light .bg-white { background: #ffffff; }
+    .dark .bg-white { background: #374151; }
+    .light .text-gray-900 { color: #111827; }
+    .dark .text-gray-900 { color: #f9fafb; }
+    .menu ul li a { display: block; padding: 8px; }
   </style>
 </head>
 <body>
   <!-- iOS-Style Menu -->
   <div class="fixed top-0 left-0 w-full z-50">
     <div class="glass p-4 flex justify-between items-center">
-      <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMjAgNEMxMC42MDg2IDQgNCAxMC42MDg2IDQgMjBDNCAyOS4zOTE0IDEwLjYwODY Airways 36 20 36C29.3914 36 36 29.3914 36 20C36 10.6086 29.3914 4 20 4Z" fill="#3B87FC"/><path d="M18.5 22H24.5V28H18.5V22Z" fill="#FFFFFF"/><path d="M18.5 12H14.5V18H18.5V12Z" fill="#FFFFFF"/><path d="M24.5 18H28.5V12H24.5V18Z" fill="#FFFFFF"/></svg>" alt="Logo" class="h-10">
-      <div class="hamburger cursor-pointer" onclick="toggleMenu()">
-        <span class="block w-6 h-0.5 bg-gray-900 mb-1.5"></span>
-        <span class="block w-6 h-0.5 bg-gray-900 mb-1.5"></span>
-        <span class="block w-6 h-0.5 bg-gray-900"></span>
+      <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMjAgNEMxMC42MDg2IDQgNCAxMC42MDg2IDQgMjBDNCAyOS4zOTE0IDEwLjYwODYgMzYgMjAgMzZDMjkuMzkxNCAzNiAzNiAyOS4zOTE0IDM2IDIwQzM2IDEwLjYwODYgMjkuMzkxNCA0IDIwIDRaIiBmaWxsPSIjM0I4N0ZDIi8+PHBhdGggZD0iTTE4LjUgMjJIMjQuNVYyOEgxOC41VjIyWiIgZmlsbD0iI0ZGRkZGRiIvPjxwYXRoIGQ9Ik0xOC41IDEySDE0LjVWMThIMTguNVYxMloiIGZpbGw9IiNGRkZGRkYiLz48cGF0aCBkPSJNMjQuNSAxOEgyOC41VjEySDI0LjVWMThaIiBmaWxsPSIjRkZGRkZGIi8+PC9zdmc+" alt="Logo" class="h-10">
+      <div class="flex items-center space-x-4">
+        <button id="theme-toggle" class="text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400">
+          <svg id="sun-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+          <svg id="moon-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+        </button>
+        <div class="hamburger cursor-pointer" onclick="toggleMenu()">
+          <span class="block w-6 h-0.5 bg-gray-900 dark:bg-gray-100 mb-1.5"></span>
+          <span class="block w-6 h-0.5 bg-gray-900 dark:bg-gray-100 mb-1.5"></span>
+          <span class="block w-6 h-0.5 bg-gray-900 dark:bg-gray-100"></span>
+        </div>
       </div>
     </div>
     <div id="menu" class="menu fixed top-0 right-0 h-full w-64 glass transform translate-x-full">
-      <ul class="p-6 space-y-4 mt-16">
-        <li><a href="index.html" class="text-gray-900 hover:text-blue-600" onclick="toggleMenu()">Home</a></li>
-        <li><a href="premium.html" class="text-gray-900 hover:text-blue-600" onclick="toggleMenu()">Premium Features</a></li>
-        <li><a href="index.html#form" class="text-gray-900 hover:text-blue-600" onclick="toggleMenu()">Get Started</a></li>
-        <li><a href="index.html#contact" class="text-gray-900 hover:text-blue-600" onclick="toggleMenu()">Contact</a></li>
+      <ul class="p-6 space-y-4 mt-16 text-lg">
+        <li><a href="index.html" class="text-gray-900 hover:text-blue-600 dark:text-gray-100 dark:hover:text-blue-400" onclick="toggleMenu()">Home</a></li>
+        <li><a href="premium.html" class="text-gray-900 hover:text-blue-600 dark:text-gray-100 dark:hover:text-blue-400" onclick="toggleMenu()">Premium Features</a></li>
+        <li><a href="index.html#form" class="text-gray-900 hover:text-blue-600 dark:text-gray-100 dark:hover:text-blue-400" onclick="toggleMenu()">Get Started</a></li>
+        <li><a href="index.html#contact" class="text-gray-900 hover:text-blue-600 dark:text-gray-100 dark:hover:text-blue-400" onclick="toggleMenu()">Contact</a></li>
       </ul>
     </div>
   </div>
 
   <!-- Premium Features Section -->
-  <section class="py-16 px-4 parallax" style="background-image: url('https://images.unsplash.com/photo-1614850715649-1d0106293bd1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')">
+  <section class="py-16 px-4 bg-gray-50 dark:bg-gray-900">
     <div class="max-w-5xl mx-auto">
-      <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">Premium Features</h2>
-      <p class="text-gray-600 mb-8 text-center">Upgrade to premium for advanced customization and exclusive benefits. Pricing is based on your website’s size:</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12 dark:text-gray-100">Premium Features</h2>
+      <p class="text-gray-600 mb-8 text-center dark:text-gray-300">Upgrade to premium for advanced customization and exclusive benefits. Pricing is based on your website’s size:</p>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="bg-white p-6 rounded-2xl shadow-lg glass">
-          <h3 class="text-xl font-semibold text-gray-900 mb-2">Small Website</h3>
-          <p class="text-gray-600">Perfect for portfolios or personal pages. Affordable pricing.</p>
+        <div class="bg-white p-6 rounded-2xl shadow-lg glass dark:bg-gray-700">
+          <h3 class="text-xl font-semibold text-gray-900 mb-2 dark:text-gray-100">Small Website</h3>
+          <p class="text-gray-600 dark:text-gray-300">Perfect for portfolios or personal pages. Affordable pricing.</p>
         </div>
-        <div class="bg-white p-6 rounded-2xl shadow-lg glass">
-          <h3 class="text-xl font-semibold text-gray-900 mb-2">Medium Website</h3>
-          <p class="text-gray-600">Ideal for blogs or small businesses. Balanced features.</p>
+        <div class="bg-white p-6 rounded-2xl shadow-lg glass dark:bg-gray-700">
+          <h3 class="text-xl font-semibold text-gray-900 mb-2 dark:text-gray-100">Medium Website</h3>
+          <p class="text-gray-600 dark:text-gray-300">Ideal for blogs or small businesses. Balanced features.</p>
         </div>
-        <div class="bg-white p-6 rounded-2xl shadow-lg glass">
-          <h3 class="text-xl font-semibold text-gray-900 mb-2">Large Website</h3>
-          <p class="text-gray-600">For complex sites with advanced functionality.</p>
+        <div class="bg-white p-6 rounded-2xl shadow-lg glass dark:bg-gray-700">
+          <h3 class="text-xl font-semibold text-gray-900 mb-2 dark:text-gray-100">Large Website</h3>
+          <p class="text-gray-600 dark:text-gray-300">For complex sites with advanced functionality.</p>
         </div>
       </div>
       <div class="mt-8 text-center">
-        <h3 class="text-xl font-semibold text-gray-900 mb-4">Premium Benefits</h3>
-        <ul class="text-gray-600 space-y-2">
+        <h3 class="text-xl font-semibold text-gray-900 mb-4 dark:text-gray-100">Premium Benefits</h3>
+        <ul class="text-gray-600 space-y-2 dark:text-gray-300">
           <li>Advanced Customization Options</li>
           <li>Unlimited Edits</li>
           <li>Priority Support</li>
@@ -73,9 +92,9 @@
         </ul>
         <button class="mt-6 bg-gray-400 text-white py-3 px-6 rounded-full shadow-lg glass cursor-not-allowed" onclick="showNotice()">Buy Now</button>
         <div id="notice" class="hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-          <div class="bg-white p-6 rounded-2xl glass text-center">
-            <p class="text-gray-900 font-semibold">Under Development</p>
-            <p class="text-gray-600 mt-2">Premium features are coming soon!</p>
+          <div class="bg-white p-6 rounded-2xl glass text-center dark:bg-gray-700">
+            <p class="text-gray-900 font-semibold dark:text-gray-100">Under Development</p>
+            <p class="text-gray-600 mt-2 dark:text-gray-300">Premium features are coming soon!</p>
             <button class="mt-4 bg-blue-600 text-white py-2 px-4 rounded-full" onclick="hideNotice()">Close</button>
           </div>
         </div>
@@ -84,11 +103,30 @@
   </section>
 
   <!-- Footer -->
-  <footer class="py-8 px-4 bg-gray-100 text-center">
-    <p class="text-gray-600">© Your Agency Name 2025 – Affordable Personal Custom Website Development</p>
+  <footer class="py-8 px-4 bg-gray-100 dark:bg-gray-800 text-center">
+    <p class="text-gray-600 dark:text-gray-300">© Your Agency Name 2025 – Affordable Personal Custom Website Development</p>
   </footer>
 
   <script>
+    // Theme Toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    const html = document.getElementById('theme');
+    const sunIcon = document.getElementById('sun-icon');
+    const moonIcon = document.getElementById('moon-icon');
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    html.className = savedTheme;
+    if (savedTheme === 'dark') {
+      sunIcon.classList.add('hidden');
+      moonIcon.classList.remove('hidden');
+    }
+    themeToggle.addEventListener('click', () => {
+      const newTheme = html.className === 'light' ? 'dark' : 'light';
+      html.className = newTheme;
+      localStorage.setItem('theme', newTheme);
+      sunIcon.classList.toggle('hidden');
+      moonIcon.classList.toggle('hidden');
+    });
+
     // Menu Toggle
     function toggleMenu() {
       const menu = document.getElementById('menu');
@@ -105,7 +143,7 @@
       document.getElementById('notice').classList.add('hidden');
     }
 
-    // Scroll Reveal Animation (CSS-based for performance)
+    // Scroll Reveal Animation
     const sections = document.querySelectorAll('section');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -115,4 +153,4 @@
     sections.forEach(section => observer.observe(section));
   </script>
 </body>
-  </html>
+</html>
