@@ -3,82 +3,133 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GitHub Portfolio Website Service</title    		    
-  <meta name="description" content="Create a professional GitHub portfolio website easily. Fast, affordable, and tailored for you.">
+  <title>Personal Custom Website Service</title>
+  <meta name="description" content="Get a personal, customizable website with free hosting. Affordable, trusted, and tailored for you. Pay only after preview.">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://vincentgarreau.github.io/particles.js/particles.js"></script>
   <style>
-    body { font-family: 'Inter', sans-serif; background: #fff; }
+    body { font-family: 'Inter', sans-serif; background: #f5f5f5; }
+    .glass { background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.3); }
     .card { transition: transform 0.3s, box-shadow 0.3s; }
     .card:hover { transform: scale(1.02); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); }
     #particles-js { position: absolute; width: 100%; height: 100%; z-index: -1; }
+    .parallax { background-attachment: fixed; background-size: cover; background-position: center; }
+    .menu { transition: transform 0.3s ease-in-out; }
+    .menu-open { transform: translateX(0); }
+    .hamburger span { transition: all 0.3s ease; }
+    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(7px, -7px); }
   </style>
 </head>
 <body>
+  <!-- iOS-Style Menu -->
+  <div class="fixed top-0 left-0 w-full z-50">
+    <div class="glass p-4 flex justify-between items-center">
+      <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMjAgNEMxMC42MDg2IDQgNCAxMC42MDg2IDQgMjBDNCAyOS4zOTE0IDEwLjYwODYgMzYgMjAgMzZDMjkuMzkxNCAzNiAzNiAyOS4zOTE0IDM2IDIwQzM2IDEwLjYwODYgMjkuMzkxNCA0IDIwIDRaIiBmaWxsPSIjM0I4N0ZDIi8+PHBhdGggZD0iTTE4LjUgMjJIMjQuNVYyOEgxOC41VjIyWiIgZmlsbD0iI0ZGRkZGRiIvPjxwYXRoIGQ9Ik0xOC41IDEySDE0LjVWMThIMTguNVYxMloiIGZpbGw9IiNGRkZGRkYiLz48cGF0aCBkPSJNMjQuNSAxOEgyOC41VjEySDI0LjVWMThaIiBmaWxsPSIjRkZGRkZGIi8+PC9zdmc+" alt="Logo" class="h-10">
+      <div class="hamburger cursor-pointer" onclick="toggleMenu()">
+        <span class="block w-6 h-0.5 bg-gray-900 mb-1.5"></span>
+        <span class="block w-6 h-0.5 bg-gray-900 mb-1.5"></span>
+        <span class="block w-6 h-0.5 bg-gray-900"></span>
+      </div>
+    </div>
+    <div id="menu" class="menu fixed top-0 right-0 h-full w-64 glass transform translate-x-full">
+      <ul class="p-6 space-y-4 mt-16">
+        <li><a href="#home" class="text-gray-900 hover:text-blue-600" onclick="toggleMenu()">Home</a></li>
+        <li><a href="#premium" class="text-gray-900 hover:text-blue-600" onclick="toggleMenu()">Premium Features</a></li>
+        <li><a href="#form" class="text-gray-900 hover:text-blue-600" onclick="toggleMenu()">Get Started</a></li>
+        <li><a href="#contact" class="text-gray-900 hover:text-blue-600" onclick="toggleMenu()">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+
   <!-- Hero Section -->
-  <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+  <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden parallax" style="background-image: url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')">
     <div id="particles-js" class="absolute inset-0"></div>
     <div class="text-center z-10 px-4">
-      <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-4">Create Your Personal GitHub Website</h1>
-      <p class="text-lg md:text-xl text-gray-600 mb-8">Stand out with a professional portfolio built just for you. Fast, Simple, Affordable.</p>
-      <a href="#form" class="inline-block bg-blue-600 text-white py-3 px-6 rounded-full shadow-lg hover:bg-blue-700 transition duration-300">Get Started</a>
+      <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-4">Your Dream Website, Built Affordably</h1>
+      <p class="text-lg md:text-xl text-gray-600 mb-8">Get a personal, customizable website with free hosting. Pay only after preview.</p>
+      <a href="#form" class="inline-block bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-3 px-6 rounded-full shadow-lg glass hover:from-blue-700 hover:to-indigo-700 transition duration-300">Get Started</a>
+    </div>
+  </section>
+
+  <!-- Client Trust Section -->
+  <section class="py-16 px-4 bg-gray-100">
+    <div class="max-w-5xl mx-auto text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Trusted by 327 Clients</h2>
+      <p class="text-gray-600 mb-8">Join hundreds who’ve built their perfect website with us.</p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white p-6 rounded-2xl shadow-lg glass">
+          <p class="text-gray-600 italic">"Absolutely love my new website! It’s exactly what I wanted."</p>
+          <p class="text-gray-900 font-semibold mt-2">Sarah J., Freelancer</p>
+        </div>
+        <div class="bg-white p-6 rounded-2xl shadow-lg glass">
+          <p class="text-gray-600 italic">"The process was so easy, and the team was super responsive."</p>
+          <p class="text-gray-900 font-semibold mt-2">Michael R., Developer</p>
+        </div>
+        <div class="bg-white p-6 rounded-2xl shadow-lg glass">
+          <p class="text-gray-600 italic">"Affordable and professional. Highly recommend!"</p>
+          <p class="text-gray-900 font-semibold mt-2">Priya S., Entrepreneur</p>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- About Service Section -->
   <section class="py-16 px-4">
-    <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">Why Choose Us?</h2>
+    <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">Why Choose Our Service?</h2>
     <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
-      <div class="bg-white p-6 rounded-2xl shadow-lg card">
-        <h3 class="text-xl font-semibold text-gray-900 mb-2">Submit Your Data Easily</h3>
-        <p class="text-gray-600">Fill out a simple form with your GitHub details.</p>
+      <div class="bg-white p-6 rounded-2xl shadow-lg card glass">
+        <h3 class="text-xl font-semibold text-gray-900 mb-2">Easy Submission</h3>
+        <p class="text-gray-600">Share your details via a simple form.</p>
       </div>
-      <div class="bg-white p-6 rounded-2xl shadow-lg card">
-        <h3 class="text-xl font-semibold text-gray-900 mb-2">See Your Live Website</h3>
-        <p class="text-gray-600">Get a preview link to your portfolio.</p>
+      <div class="bg-white p-6 rounded-2xl shadow-lg card glass">
+        <h3 class="text-xl font-semibold text-gray-900 mb-2">Preview First</h3>
+        <p class="text-gray-600">See your website live before paying.</p>
       </div>
-      <div class="bg-white p-6 rounded-2xl shadow-lg card">
-        <h3 class="text-xl font-semibold text-gray-900 mb-2">Pay and Own It</h3>
-        <p class="text-gray-600">Secure payment and full ownership.</p>
+      <div class="bg-white p-6 rounded-2xl shadow-lg card glass">
+        <h3 class="text-xl font-semibold text-gray-900 mb-2">Affordable Pricing</h3>
+        <p class="text-gray-600">Custom websites at prices you’ll love.</p>
       </div>
-      <div class="bg-white p-6 rounded-2xl shadow-lg card">
-        <h3 class="text-xl font-semibold text-gray-900 mb-2">Easy Edits After Payment</h3>
-        <p class="text-gray-600">Request changes anytime.</p>
+      <div class="bg-white p-6 rounded-2xl shadow-lg card glass">
+        <h3 class="text-xl font-semibold text-gray-900 mb-2">Free Hosting</h3>
+        <p class="text-gray-600">Your website hosted for free, forever.</p>
       </div>
     </div>
+    <p class="text-center text-gray-600 mt-8">100% Satisfaction Guarantee – Pay only when you’re happy!</p>
   </section>
 
   <!-- How It Works Section -->
-  <section class="py-16 px-4 bg-gray-50">
+  <section class="py-16 px-4 bg-gray-50 parallax" style="background-image: url('https://images.unsplash.com/photo-1507238691740-903d1c7dd106?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')">
     <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">How It Works</h2>
     <div class="max-w-3xl mx-auto">
       <div class="flex items-start mb-8">
-        <div class="flex-shrink-0 w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center mr-4">1</div>
+        <div class="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-full flex items-center justify-center mr-4">1</div>
         <div>
-          <h3 class="text-xl font-semibold text-gray-900">Fill the Form</h3>
-          <p class="text-gray-600">Provide your GitHub details.</p>
+          <h3 class="text-xl font-semibold text-gray-900">Submit Your Details</h3>
+          <p class="text-gray-600">Fill out our form with your preferences.</p>
         </div>
       </div>
       <div class="flex items-start mb-8">
-        <div class="flex-shrink-0 w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center mr-4">2</div>
+        <div class="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-full flex items-center justify-center mr-4">2</div>
         <div>
-          <h3 class="text-xl font-semibold text-gray-900">Website Ready & Link Shared</h3>
-          <p class="text-gray-600">Preview your live site.</p>
+          <h3 class="text-xl font-semibold text-gray-900">Preview Your Website</h3>
+          <p class="text-gray-600">Get a live link to review your site.</p>
         </div>
       </div>
       <div class="flex items-start mb-8">
-        <div class="flex-shrink-0 w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center mr-4">3</div>
+        <div class="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-full flex items-center justify-center mr-4">3</div>
         <div>
-          <h3 class="text-xl font-semibold text-gray-900">Pay Securely</h3>
-          <p class="text-gray-600">Complete payment to own it.</p>
+          <h3 class="text-xl font-semibold text-gray-900">Secure Payment</h3>
+          <p class="text-gray-600">Pay only after you’re satisfied.</p>
         </div>
       </div>
       <div class="flex items-start mb-8">
-        <div class="flex-shrink-0 w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center mr-4">4</div>
+        <div class="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-full flex items-center justify-center mr-4">4</div>
         <div>
-          <h3 class="text-xl font-semibold text-gray-900">Final Edits + Delivery</h3>
-          <p class="text-gray-600">Request edits and get the final site.</p>
+          <h3 class="text-xl font-semibold text-gray-900">Finalize & Launch</h3>
+          <p class="text-gray-600">Request edits and launch your site.</p>
         </div>
       </div>
     </div>
@@ -86,33 +137,72 @@
 
   <!-- Form Section -->
   <section id="form" class="py-16 px-4">
-    <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">Get Your Website Now</h2>
-    <div class="max-w-3xl mx-auto bg-white p-8 rounded-2xl shadow-lg">
-      <p class="text-gray-600 mb-4 text-center">Fill out our simple form to start building your portfolio.</p>
-      <a href="YOUR_GOOGLE_FORM_LINK" target="_blank" rel="noopener noreferrer" class="block text-center bg-blue-600 text-white py-3 px-6 rounded-full shadow-lg hover:bg-blue-700 transition duration-300">Fill Form</a>
+    <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">Start Your Website Today</h2>
+    <div class="max-w-3xl mx-auto bg-white p-8 rounded-2xl shadow-lg glass">
+      <p class="text-gray-600 mb-4 text-center">Tell us what you want, and we’ll build your custom website.</p>
+      <a href="YOUR_GOOGLE_FORM_LINK" target="_blank" rel="noopener noreferrer" class="block text-center bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-3 px-6 rounded-full shadow-lg glass hover:from-blue-700 hover:to-indigo-700 transition duration-300">Fill Form</a>
     </div>
   </section>
 
-  <!-- Payment Information Section -->
-  <section class="py-16 px-4 bg-gray-50">
-    <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">Payment Options</h2>
-    <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
-      <div class="bg-white p-6 rounded-2xl shadow-lg bg-gradient-to-br from-blue-50 to-white">
-        <h3 class="text-xl font-semibold text-gray-900 mb-2">For Indian Clients</h3>
-        <p class="text-gray-600 mb-4">Pay securely via FamPay UPI.</p>
-        <p class="text-gray-600">UPI ID: YOUR_UPI_ID</p>
-        <p class="text-gray-600">Scan the QR code (coming soon).</p>
+  <!-- Payment Process Section -->
+  <section class="py-16 px-4 bg-gray-100">
+    <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">How Payment Works</h2>
+    <div class="max-w-5xl mx-auto">
+      <p class="text-gray-600 mb-8 text-center">We make payment simple and secure. Preview your website, and we’ll send you payment details via your preferred communication method (email or WhatsApp). Pay only when you’re 100% satisfied.</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="bg-white p-6 rounded-2xl shadow-lg glass">
+          <h3 class="text-xl font-semibold text-gray-900 mb-2">Transparent Process</h3>
+          <p class="text-gray-600">No upfront costs. Pay after you approve your website.</p>
+        </div>
+        <div class="bg-white p-6 rounded-2xl shadow-lg glass">
+          <h3 class="text-xl font-semibold text-gray-900 mb-2">Secure Payments</h3>
+          <p class="text-gray-600">Choose from secure options tailored to you.</p>
+        </div>
       </div>
-      <div class="bg-white p-6 rounded-2xl shadow-lg bg-gradient-to-br from-blue-50 to-white">
-        <h3 class="text-xl font-semibold text-gray-900 mb-2">For International Clients</h3>
-        <p class="text-gray-600 mb-4">Pay securely via PayPal.</p>
-        <a href="YOUR_PAYPAL_LINK" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">Pay with PayPal</a>
+    </div>
+  </section>
+
+  <!-- Premium Features Section -->
+  <section id="premium" class="py-16 px-4 parallax" style="background-image: url('https://images.unsplash.com/photo-1516321497487-e288fb19713f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')">
+    <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">Premium Features</h2>
+    <div class="max-w-5xl mx-auto">
+      <p class="text-gray-600 mb-8 text-center">Upgrade to premium for advanced customization and exclusive benefits. Pricing is based on your website’s size:</p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white p-6 rounded-2xl shadow-lg glass">
+          <h3 class="text-xl font-semibold text-gray-900 mb-2">Small Website</h3>
+          <p class="text-gray-600">Perfect for portfolios or personal pages. Affordable pricing.</p>
+        </div>
+        <div class="bg-white p-6 rounded-2xl shadow-lg glass">
+          <h3 class="text-xl font-semibold text-gray-900 mb-2">Medium Website</h3>
+          <p class="text-gray-600">Ideal for blogs or small businesses. Balanced features.</p>
+        </div>
+        <div class="bg-white p-6 rounded-2xl shadow-lg glass">
+          <h3 class="text-xl font-semibold text-gray-900 mb-2">Large Website</h3>
+          <p class="text-gray-600">For complex sites with advanced functionality.</p>
+        </div>
+      </div>
+      <div class="mt-8 text-center">
+        <h3 class="text-xl font-semibold text-gray-900 mb-4">Premium Benefits</h3>
+        <ul class="text-gray-600 space-y-2">
+          <li>Advanced Customization Options</li>
+          <li>Unlimited Edits</li>
+          <li>Priority Support</li>
+          <li>Exclusive Design Features</li>
+        </ul>
+        <button class="mt-6 bg-gray-400 text-white py-3 px-6 rounded-full shadow-lg glass cursor-not-allowed" onclick="showNotice()">Buy Now</button>
+        <div id="notice" class="hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+          <div class="bg-white p-6 rounded-2xl glass text-center">
+            <p class="text-gray-900 font-semibold">Under Development</p>
+            <p class="text-gray-600 mt-2">Premium features are coming soon!</p>
+            <button class="mt-4 bg-blue-600 text-white py-2 px-4 rounded-full" onclick="hideNotice()">Close</button>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Contact Section -->
-  <section class="py-16 px-4">
+  <section id="contact" class="py-16 px-4">
     <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">Contact Us</h2>
     <div class="max-w-3xl mx-auto text-center">
       <div class="flex justify-center space-x-8 mb-4">
@@ -123,16 +213,17 @@
           <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h18M3 19h18M3 12h18"></path></svg>
         </a>
       </div>
-      <p class="text-gray-600">We reply fast!</p>
+      <p class="text-gray-600">We reply fast – let’s build your website today!</p>
     </div>
   </section>
 
   <!-- Footer -->
   <footer class="py-8 px-4 bg-gray-100 text-center">
-    <p class="text-gray-600">© Your Agency Name 2025</p>
+    <p class="text-gray-600">© Your Agency Name 2025 – Affordable Personal Custom Website Development</p>
   </footer>
 
   <script>
+    // Particles.js
     window.particlesJS('particles-js', {
       particles: {
         number: { value: 50, density: { enable: true, value_area: 800 } },
@@ -146,6 +237,48 @@
       interactivity: {
         events: { onhover: { enable: true, mode: 'repulse' } }
       }
+    });
+
+    // Menu Toggle
+    function toggleMenu() {
+      const menu = document.getElementById('menu');
+      const hamburger = document.querySelector('.hamburger');
+      menu.classList.toggle('menu-open');
+      hamburger.classList.toggle('open');
+    }
+
+    // Premium Notice
+    function showNotice() {
+      document.getElementById('notice').classList.remove('hidden');
+    }
+    function hideNotice() {
+      document.getElementById('notice').classList.add('hidden');
+    }
+
+    // Client Counter Animation
+    let count = 0;
+    const target = 327;
+    const counter = setInterval(() => {
+      if (count >= target) clearInterval(counter);
+      document.querySelector('h2').textContent = `Trusted by ${count} Clients`;
+      count += 5;
+    }, 50);
+
+    // Scroll Reveal Animation
+    const sections = document.querySelectorAll('section');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = 1;
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1 });
+    sections.forEach(section => {
+      section.style.opacity = 0;
+      section.style.transform = 'translateY(20px)';
+      section.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+      observer.observe(section);
     });
   </script>
 </body>
