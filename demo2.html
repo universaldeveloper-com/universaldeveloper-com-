@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en" id="theme" class="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demo 2: 3D Power - Nexlify Studio</title>
+  <meta name="description" content="A powerful 3D website demo showcasing Nexlify Studio's advanced development capabilities.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: 'Inter', sans-serif; margin: 0; transition: background-color 0.3s ease; }
+    .light { background: #f5f5f5; color: #111827; }
+    .dark { background: #1f2937; color: #f9fafb; }
+    .light .glass { background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.3); }
+    .dark .glass { background: rgba(31, 41, 55, 0.2); backdrop-filter: blur(10px); border: 1px solid rgba(55, 65, 81, 0.3); }
+    .card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .card:hover { transform: scale(1.05); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); }
+    .menu { transition: transform 0.3s ease-in-out; z-index: 1000; }
+    .menu-open { transform: translateX(0); }
+    .hamburger span { transition: all 0.3s ease; }
+    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(7px, -7px); }
+    section { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    section.visible { opacity: 1; transform: translateY(0); }
+    .light .text-gray-600 { color: #4b5563; }
+    .dark .text-gray-600 { color: #d1d5db; }
+    .light .bg-gray-100 { background: #f3f4f6; }
+    .dark .bg-gray-100 { background: #374151; }
+    .light .bg-gray-50 { background: #f9fafb; }
+    .dark .bg-gray-50 { background: #1f2937; }
+    .light .bg-white { background: #ffffff; }
+    .dark .bg-white { background: #374151; }
+    .light .text-gray-900 { color: #111827; }
+    .dark .text-gray-900 { color: #f9fafb; }
+    .menu ul li a { display: block; padding: 12px; transition: transform 0.2s ease; }
+    .menu ul li a:hover { transform: translateX(8px); }
+    .cube-container { perspective: 1000px; }
+    .cube { width: 200px; height: 200px; position: relative; transform-style: preserve-3d; animation: rotateCube 10s infinite linear; }
+    .cube-face { position: absolute; width: 200px; height: 200px; background: linear-gradient(135deg, #3B82F6, #818CF8); opacity: 0.8; border: 1px solid rgba(255, 255, 255, 0.3); }
+    .cube-face.front { transform: translateZ(100px); }
+    .cube-face.back { transform: translateZ(-100px) rotateY(180deg); }
+    .cube-face.left { transform: translateX(-100px) rotateY(-90deg); }
+    .cube-face.right { transform: translateX(100px) rotateY(90deg); }
+    .cube-face.top { transform: translateY(-100px) rotateX(90deg); }
+    .cube-face.bottom { transform: translateY(100px) rotateX(-90deg); }
+    @keyframes rotateCube { from { transform: rotateX(0) rotateY(0); } to { transform: rotateX(360deg) rotateY(360deg); } }
+  </style>
+</head>
+<body>
+  <!-- iOS-Style Menu -->
+  <div class="fixed top-0 left-0 w-full z-50">
+    <div class="glass p-4 flex justify-between items-center">
+      <div class="flex items-center">
+        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMjAgNEMxMC42MDg2IDQgNCAxMC42MDg2IDQgMjBDNCAyOS4zOTE0IDEwLjYwODYgMzYgMjAgMzZDMjkuMzkxNCAzNiAzNiAyOS4zOTE0IDM2IDIwQzM2IDEwLjYwODYgMjkuMzkxNCA0IDIwIDRaIiBmaWxsPSIjM0I4N0ZDIi8+PHBhdGggZD0iTTE4LjUgMjJIMjQuNVYyOEgxOC41VjIyWiIgZmlsbD0iI0ZGRkZGRiIvPjxwYXRoIGQ9Ik0xOC41IDEySDE0LjVWMThIMTguNVYxMloiIGZmlsbD0iI0ZGRkZGRiIvPjxwYXRoIGQ9Ik0yNC41IDE4SDI4LjVWM TJSDI0LjVWMThaIiBmaWxsPSIjRkZGRkZGIi8+PC9zdmc+" alt="Nexlify Studio Logo" class="h-10">
+        <span class="ml-2 text-xl font-bold text-gray-900 dark:text-gray-100">Nexlify Studio</span>
+      </div>
+      <div class="flex items-center space-x-4">
+        <button id="theme-toggle" class="text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400">
+          <svg id="sun-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+          <svg id="moon-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+        </button>
+        <div class="hamburger cursor-pointer" onclick="toggleMenu()">
+          <span class="block w-6 h-0.5 bg-gray-900 dark:bg-gray-100 mb-1.5"></span>
+          <span class="block w-6 h-0.5 bg-gray-900 dark:bg-gray-100 mb-1.5"></span>
+          <span class="block w-6 h-0.5 bg-gray-900 dark:bg-gray-100"></span>
+        </div>
+      </div>
+    </div>
+    <div id="menu" class="menu fixed top-0 right-0 h-full w-64 glass transform translate-x-full bg-opacity-90 z-[1000]">
+      <ul class="p-6 space-y-4 mt-16 text-lg">
+        <li><a href="index.html" class="text-gray-900 hover:text-blue-600 dark:text-gray-100 dark:hover:text-blue-400" onclick="toggleMenu()">Home</a></li>
+        <li><a href="premium.html" class="text-gray-900 hover:text-blue-600 dark:text-gray-100 dark:hover:text-blue-400" onclick="toggleMenu()">Premium Features</a></li>
+        <li><a href="chatbot.html" class="text-gray-900 hover:text-blue-600 dark:text-gray-100 dark:hover:text-blue-400" onclick="toggleMenu()">Chatbot</a></li>
+        <li><a href="demo.html" class="text-gray-900 hover:text-blue-600 dark:text-gray-100 dark:hover:text-blue-400" onclick="toggleMenu()">Demo</a></li>
+        <li><a href="index.html#form" class="text-gray-900 hover:text-blue-600 dark:text-gray-100 dark:hover:text-blue-400" onclick="toggleMenu()">Get Started</a></li>
+        <li><a href="index.html#contact" class="text-gray-900 hover:text-blue-600 dark:text-gray-100 dark:hover:text-blue-400" onclick="toggleMenu()">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="relative min-h-screen flex items-center justify-center bg-gray-900">
+    <div class="text-center z-10 px-4">
+      <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">3D Power Demo</h1>
+      <p class="text-lg md:text-xl text-gray-300 mb-8">Discover our advanced 3D development capabilities.</p>
+      <a href="index.html#form" class="inline-block bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-3 px-6 rounded-full shadow-lg glass hover:from-blue-700 hover:to-indigo-700 transition duration-300">Get Your Website</a>
+    </div>
+  </section>
+
+  <!-- 3D Features Section -->
+  <section class="py-16 px-4 bg-gray-50 dark:bg-gray-900">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12 dark:text-gray-100">Interactive 3D Elements</h2>
+      <div class="flex justify-center mb-12">
+        <div class="cube-container">
+          <div class="cube">
+            <div class="cube-face front"></div>
+            <div class="cube-face back"></div>
+            <div class="cube-face left"></div>
+            <div class="cube-face right"></div>
+            <div class="cube-face top"></div>
+            <div class="cube-face bottom"></div>
+          </div>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="card bg-white p-6 rounded-2xl shadow-lg glass dark:bg-gray-700">
+          <h3 class="text-xl font-semibold text-gray-900 mb-2 dark:text-gray-100">3D Animations</h3>
+          <p class="text-gray-600 dark:text-gray-300">Dynamic 3D objects that rotate and interact.</p>
+        </div>
+        <div class="card bg-white p-6 rounded-2xl shadow-lg glass dark:bg-gray-700">
+          <h3 class="text-xl font-semibold text-gray-900 mb-2 dark:text-gray-100">Immersive Design</h3>
+          <p class="text-gray-600 dark:text-gray-300">Create engaging, depth-driven experiences.</p>
+        </div>
+        <div class="card bg-white p-6 rounded-2xl shadow-lg glass dark:bg-gray-700">
+          <h3 class="text-xl font-semibold text-gray-900 mb-2 dark:text-gray-100">Cross-Platform</h3>
+          <p class="text-gray-600 dark:text-gray-300">3D effects optimized for all devices.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-8 px-4 bg-gray-100 dark:bg-gray-800 text-center">
+    <p class="text-gray-600 dark:text-gray-300">© Nexlify Studio 2025 – Affordable Personal Custom Website Development</p>
+  </footer>
+
+  <script>
+    // Theme Toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    const html = document.getElementById('theme');
+    const sunIcon = document.getElementById('sun-icon');
+    const moonIcon = document.getElementById('moon-icon');
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    html.className = savedTheme;
+    if (savedTheme === 'dark') {
+      sunIcon.classList.add('hidden');
+      moonIcon.classList.remove('hidden');
+    }
+    themeToggle.addEventListener('click', () => {
+      const newTheme = html.className === 'light' ? 'dark' : 'light';
+      html.className = newTheme;
+      localStorage.setItem('theme', newTheme);
+      sunIcon.classList.toggle('hidden');
+      moonIcon.classList.toggle('hidden');
+    });
+
+    // Menu Toggle
+    function toggleMenu() {
+      const menu = document.getElementById('menu');
+      const hamburger = document.querySelector('.hamburger');
+      menu.classList.toggle('menu-open');
+      hamburger.classList.toggle('open');
+    }
+
+    // Scroll Reveal Animation
+    const sections = document.querySelectorAll('section');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1 });
+    sections.forEach(section => observer.observe(section));
+  </script>
+</body>
+</html>
