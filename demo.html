@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Website Demos - Nexlify Studio</title>
-  <meta name="description" content="Explore our stunning website demos showcasing Nexlify Studio's powerful development capabilities.">
+  <title>Demo - Nexlify Studio</title>
+  <meta name="description" content="Explore stunning website demos by Nexlify Studio, showcasing iOS elegance, 3D power, and cyberpunk aesthetics.">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
@@ -15,9 +15,28 @@
     .dark .glass { background: rgba(31, 41, 55, 0.2); backdrop-filter: blur(10px); border: 1px solid rgba(55, 65, 81, 0.3); }
     .card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
     .card:hover { transform: scale(1.05); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); }
-    .menu { transition: transform 0.3s ease-in-out; z-index: 1000; }
+    .menu { 
+      position: fixed; 
+      top: 0; 
+      right: 0; 
+      height: 100%; 
+      width: 260px; 
+      transform: translateX(100%); 
+      transition: transform 0.3s ease-in-out; 
+      z-index: 1000; 
+      pointer-events: auto; 
+    }
     .menu-open { transform: translateX(0); }
-    .hamburger span { transition: all 0.3s ease; }
+    .hamburger { cursor: pointer; pointer-events: auto; }
+    .hamburger span { 
+      display: block; 
+      width: 24px; 
+      height: 2px; 
+      background: #111827; 
+      margin-bottom: 5px; 
+      transition: all 0.3s ease; 
+    }
+    .dark .hamburger span { background: #f9fafb; }
     .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
     .hamburger.open span:nth-child(2) { opacity: 0; }
     .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(7px, -7px); }
@@ -32,9 +51,14 @@
     .light .bg-white { background: #ffffff; }
     .dark .bg-white { background: #374151; }
     .light .text-gray-900 { color: #111827; }
-    .dark .text-gray-900 { color: #f9fafHarsh@123b; }
-    .menu ul li a { display: block; padding: 12px; transition: transform 0.2s ease; }
-    .menu ul li a:hover { transform: translateX(8px); }
+    .dark .text-gray-900 { color: #f9fafb; }
+    .menu ul li a { 
+      display: block; 
+      padding: 12px 16px; 
+      transition: transform 0.2s ease, color 0.2s ease; 
+    }
+    .menu ul li a:hover { transform: translateX(8px); color: #3B82F6; }
+    .dark .menu ul li a:hover { color: #60A5FA; }
   </style>
 </head>
 <body>
@@ -50,21 +74,21 @@
           <svg id="sun-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
           <svg id="moon-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
         </button>
-        <div class="hamburger cursor-pointer" onclick="toggleMenu()">
-          <span class="block w-6 h-0.5 bg-gray-900 dark:bg-gray-100 mb-1.5"></span>
-          <span class="block w-6 h-0.5 bg-gray-900 dark:bg-gray-100 mb-1.5"></span>
-          <span class="block w-6 h-0.5 bg-gray-900 dark:bg-gray-100"></span>
+        <div class="hamburger" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
       </div>
     </div>
-    <div id="menu" class="menu fixed top-0 right-0 h-full w-64 glass transform translate-x-full bg-opacity-90 z-[1000]">
+    <div id="menu" class="menu glass">
       <ul class="p-6 space-y-4 mt-16 text-lg">
-        <li><a href="index.html" class="text-gray-900 hover:text-blue-600 dark:text-gray-100 dark:hover:text-blue-400" onclick="toggleMenu()">Home</a></li>
-        <li><a href="premium.html" class="text-gray-900 hover:text-blue-600 dark:text-gray-100 dark:hover:text-blue-400" onclick="toggleMenu()">Premium Features</a></li>
-        <li><a href="chatbot.html" class="text-gray-900 hover:text-blue-600 dark:text-gray-100 dark:hover:text-blue-400" onclick="toggleMenu()">Chatbot</a></li>
-        <li><a href="demo.html" class="text-gray-900 hover:text-blue-600 dark:text-gray-100 dark:hover:text-blue-400" onclick="toggleMenu()">Demo</a></li>
-        <li><a href="index.html#form" class="text-gray-900 hover:text-blue-600 dark:text-gray-100 dark:hover:text-blue-400" onclick="toggleMenu()">Get Started</a></li>
-        <li><a href="index.html#contact" class="text-gray-900 hover:text-blue-600 dark:text-gray-100 dark:hover:text-blue-400" onclick="toggleMenu()">Contact</a></li>
+        <li><a href="index.html" class="text-gray-900 dark:text-gray-100" onclick="toggleMenu()">Home</a></li>
+        <li><a href="premium.html" class="text-gray-900 dark:text-gray-100" onclick="toggleMenu()">Premium Features</a></li>
+        <li><a href="chatbot.html" class="text-gray-900 dark:text-gray-100" onclick="toggleMenu()">Chatbot</a></li>
+        <li><a href="demo.html" class="text-gray-900 dark:text-gray-100" onclick="toggleMenu()">Demo</a></li>
+        <li><a href="index.html#form" class="text-gray-900 dark:text-gray-100" onclick="toggleMenu()">Get Started</a></li>
+        <li><a href="index.html#contact" class="text-gray-900 dark:text-gray-100" onclick="toggleMenu()">Contact</a></li>
       </ul>
     </div>
   </div>
@@ -72,20 +96,19 @@
   <!-- Demo Section -->
   <section class="py-16 px-4 bg-gray-50 dark:bg-gray-900">
     <div class="max-w-5xl mx-auto">
-      <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12 dark:text-gray-100">Explore Our Website Demos</h2>
-      <p class="text-gray-600 mb-8 text-center dark:text-gray-300">See the power of Nexlify Studio’s development capabilities through these stunning demos.</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12 dark:text-gray-100">Explore Our Demos</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <a href="demo1.html" class="card bg-white p-6 rounded-2xl shadow-lg glass dark:bg-gray-700">
-          <h3 class="text-xl font-semibold text-gray-900 mb-2 dark:text-gray-100">Demo 1: iOS Elegance</h3>
-          <p class="text-gray-600 dark:text-gray-300">A sleek, vibrant website with peak iOS aesthetics, gradients, and animations.</p>
+          <h3 class="text-xl font-semibold text-gray-900 mb-2 dark:text-gray-100">iOS Elegance</h3>
+          <p class="text-gray-600 dark:text-gray-300">Sleek, vibrant design with iOS-inspired aesthetics.</p>
         </a>
         <a href="demo2.html" class="card bg-white p-6 rounded-2xl shadow-lg glass dark:bg-gray-700">
-          <h3 class="text-xl font-semibold text-gray-900 mb-2 dark:text-gray-100">Demo 2: 3D Power</h3>
-          <p class="text-gray-600 dark:text-gray-300">Interactive 3D structures showcasing our advanced development skills.</p>
+          <h3 class="text-xl font-semibold text-gray-900 mb-2 dark:text-gray-100">3D Power</h3>
+          <p class="text-gray-600 dark:text-gray-300">Dynamic 3D elements for a bold experience.</p>
         </a>
         <a href="demo3.html" class="card bg-white p-6 rounded-2xl shadow-lg glass dark:bg-gray-700">
-          <h3 class="text-xl font-semibold text-gray-900 mb-2 dark:text-gray-100">Demo 3: Cyberpunk Future</h3>
-          <p class="text-gray-600 dark:text-gray-300">A neon-infused, futuristic design with glowing effects and parallax.</p>
+          <h3 class="text-xl font-semibold text-gray-900 mb-2 dark:text-gray-100">Cyberpunk Future</h3>
+          <p class="text-gray-600 dark:text-gray-300">Futuristic neon vibes with immersive effects.</p>
         </a>
       </div>
     </div>
