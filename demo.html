@@ -43,7 +43,7 @@
     section { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
     section.visible { opacity: 1; transform: translateY(0); }
     .light .text-gray-600 { color: #4b5563; }
-    .dark .text-gray-600 { color: #d1d5db; }
+    .dark .text-gray-600 { color: #e5e7eb; }
     .light .bg-gray-100 { background: #f3f4f6; }
     .dark .bg-gray-100 { background: #374151; }
     .light .bg-gray-50 { background: #f9fafb; }
@@ -52,6 +52,8 @@
     .dark .bg-white { background: #374151; }
     .light .text-gray-900 { color: #111827; }
     .dark .text-gray-900 { color: #f9fafb; }
+    .light p, .light h1, .light h2, .light h3 { color: #111827; }
+    .dark p, .dark h1, .dark h2, .dark h3 { color: #f9fafb; }
     .menu ul li a { 
       display: block; 
       padding: 12px 16px; 
@@ -59,6 +61,16 @@
     }
     .menu ul li a:hover { transform: translateX(8px); color: #3B82F6; }
     .dark .menu ul li a:hover { color: #60A5FA; }
+    .demo-card { 
+      background-size: cover; 
+      background-position: center; 
+      position: relative; 
+      animation: fadeIn 1s ease; 
+    }
+    @keyframes fadeIn { 
+      from { opacity: 0; } 
+      to { opacity: 1; } 
+    }
   </style>
 </head>
 <body>
@@ -98,17 +110,17 @@
     <div class="max-w-5xl mx-auto">
       <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12 dark:text-gray-100">Explore Our Demos</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <a href="demo1.html" class="card bg-white p-6 rounded-2xl shadow-lg glass dark:bg-gray-700">
-          <h3 class="text-xl font-semibold text-gray-900 mb-2 dark:text-gray-100">iOS Elegance</h3>
-          <p class="text-gray-600 dark:text-gray-300">Sleek, vibrant design with iOS-inspired aesthetics.</p>
+        <a href="demo1.html" class="card demo-card glass p-6 rounded-2xl shadow-lg dark:bg-gray-700" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('ios-demo-bg.jpg')">
+          <h3 class="text-xl font-semibold text-white mb-2">iOS Elegance</h3>
+          <p class="text-gray-300">Sleek, modern design with vibrant gradients and glassmorphism.</p>
         </a>
-        <a href="demo2.html" class="card bg-white p-6 rounded-2xl shadow-lg glass dark:bg-gray-700">
-          <h3 class="text-xl font-semibold text-gray-900 mb-2 dark:text-gray-100">3D Power</h3>
-          <p class="text-gray-600 dark:text-gray-300">Dynamic 3D elements for a bold experience.</p>
+        <a href="demo2.html" class="card demo-card glass p-6 rounded-2xl shadow-lg dark:bg-gray-700" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('3d-demo-bg.jpg')">
+          <h3 class="text-xl font-semibold text-white mb-2">3D Power</h3>
+          <p class="text-gray-300">Interactive 3D elements for an immersive experience.</p>
         </a>
-        <a href="demo3.html" class="card bg-white p-6 rounded-2xl shadow-lg glass dark:bg-gray-700">
-          <h3 class="text-xl font-semibold text-gray-900 mb-2 dark:text-gray-100">Cyberpunk Future</h3>
-          <p class="text-gray-600 dark:text-gray-300">Futuristic neon vibes with immersive effects.</p>
+        <a href="demo3.html" class="card demo-card glass p-6 rounded-2xl shadow-lg dark:bg-gray-700" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('cyberpunk-demo-bg.jpg')">
+          <h3 class="text-xl font-semibold text-white mb-2">Cyberpunk Future</h3>
+          <p class="text-gray-300">Futuristic design with holographic effects and dynamic visuals.</p>
         </a>
       </div>
     </div>
