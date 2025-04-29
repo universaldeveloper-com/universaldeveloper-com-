@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nexlify Studio - Personal Custom Website Service</title>
-  <meta name="description" content="Get a personal, customizable website with free hosting at Nexlify Studio. Affordable, trusted, and tailored for you. Pay only after preview.">
+  <title>Nexlify Studio - Affordable Custom Website Development</title>
+  <meta name="description" content="Nexlify Studio offers affordable, custom website development with a preview-first, pay-later model. Build your dream website today!">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://vincentgarreau.github.io/particles.js/particles.js"></script>
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
   <style>
     body { font-family: 'Inter', sans-serif; margin: 0; transition: background-color 0.3s ease; }
     .light { background: #f5f5f5; color: #111827; }
@@ -15,9 +15,7 @@
     .light .glass { background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.3); }
     .dark .glass { background: rgba(31, 41, 55, 0.2); backdrop-filter: blur(10px); border: 1px solid rgba(55, 65, 81, 0.3); }
     .card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
-    .card:hover { transform: scale(1.02); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); }
-    #particles-js { position: absolute; width: 100%; height: 100%; z-index: -1; }
-    .parallax { background-attachment: fixed; background-size: cover; background-position: center; }
+    .card:hover { transform: scale(1.05); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); }
     .menu { 
       position: fixed; 
       top: 0; 
@@ -46,7 +44,7 @@
     section { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
     section.visible { opacity: 1; transform: translateY(0); }
     .light .text-gray-600 { color: #4b5563; }
-    .dark .text-gray-600 { color: #d1d5db; }
+    .dark .text-gray-600 { color: #e5e7eb; }
     .light .bg-gray-100 { background: #f3f4f6; }
     .dark .bg-gray-100 { background: #374151; }
     .light .bg-gray-50 { background: #f9fafb; }
@@ -55,6 +53,8 @@
     .dark .bg-white { background: #374151; }
     .light .text-gray-900 { color: #111827; }
     .dark .text-gray-900 { color: #f9fafb; }
+    .light p, .light h1, .light h2, .light h3 { color: #111827; }
+    .dark p, .dark h1, .dark h2, .dark h3 { color: #f9fafb; }
     .menu ul li a { 
       display: block; 
       padding: 12px 16px; 
@@ -62,12 +62,21 @@
     }
     .menu ul li a:hover { transform: translateX(8px); color: #3B82F6; }
     .dark .menu ul li a:hover { color: #60A5FA; }
-    .graph-container { width: 100%; height: 200px; position: relative; }
-    .graph-bar { fill: none; stroke: url(#graphGradient); stroke-width: 4; animation: drawGraph 2s ease-in-out forwards; }
-    @keyframes drawGraph {
-      0% { stroke-dashoffset: 1000; }
-      100% { stroke-dashoffset: 0; }
+    .parallax { 
+      background: url('hero-bg.jpg') no-repeat center; 
+      background-size: cover; 
+      background-attachment: fixed; 
+      position: relative; 
     }
+    .gradient-overlay { 
+      background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.5)); 
+    }
+    .graph-line { fill: none; stroke: url(#graphGradient); stroke-width: 4; animation: drawGraph 3s ease-in-out forwards; }
+    @keyframes drawGraph { 
+      0% { stroke-dashoffset: 1000; } 
+      100% { stroke-dashoffset: 0; } 
+    }
+    #particles-js { position: absolute; width: 100%; height: 100%; z-index: 0; }
   </style>
 </head>
 <body>
@@ -92,7 +101,7 @@
     </div>
     <div id="menu" class="menu glass">
       <ul class="p-6 space-y-4 mt-16 text-lg">
-        <li><a href="#home" class="text-gray-900 dark:text-gray-100" onclick="toggleMenu()">Home</a></li>
+        <li><a href="index.html" class="text-gray-900 dark:text-gray-100" onclick="toggleMenu()">Home</a></li>
         <li><a href="premium.html" class="text-gray-900 dark:text-gray-100" onclick="toggleMenu()">Premium Features</a></li>
         <li><a href="chatbot.html" class="text-gray-900 dark:text-gray-100" onclick="toggleMenu()">Chatbot</a></li>
         <li><a href="demo.html" class="text-gray-900 dark:text-gray-100" onclick="toggleMenu()">Demo</a></li>
@@ -103,162 +112,149 @@
   </div>
 
   <!-- Hero Section -->
-  <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden parallax" style="background-image: url('hero-bg.jpg')">
+  <section class="relative min-h-screen flex items-center justify-center parallax gradient-overlay">
     <div id="particles-js" class="absolute inset-0"></div>
     <div class="text-center z-10 px-4">
-      <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-4 dark:text-gray-100">Your Dream Website, Built Affordably</h1>
-      <p class="text-lg md:text-xl text-gray-600 mb-8 dark:text-gray-300">Get a personal, customizable website with free hosting. Pay only after preview.</p>
+      <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">Build Your Dream Website</h1>
+      <p class="text-lg md:text-xl text-gray-200 mb-8">Affordable, custom websites with a preview-first, pay-later model.</p>
       <a href="#form" class="inline-block bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-3 px-6 rounded-full shadow-lg glass hover:from-blue-700 hover:to-indigo-700 transition duration-300">Get Started</a>
     </div>
   </section>
 
   <!-- Client Trust Section -->
-  <section class="py-16 px-4 bg-gray-100 dark:bg-gray-800">
-    <div class="max-w-5xl mx-auto text-center">
-      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 dark:text-gray-100">Trusted by <span id="client-counter">0</span> Clients</h2>
-      <p class="text-gray-600 mb-8 dark:text-gray-300">Join hundreds who’ve built their perfect website with us.</p>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="bg-white p-6 rounded-2xl shadow-lg glass dark:bg-gray-700">
-          <p class="text-gray-600 italic dark:text-gray-300">"Absolutely love my new website! It’s exactly what I wanted."</p>
-          <p class="text-gray-900 font-semibold mt-2 dark:text-gray-100">Sarah J., Freelancer</p>
-        </div>
-        <div class="bg-white p-6 rounded-2xl shadow-lg glass dark:bg-gray-700">
-          <p class="text-gray-600 italic dark:text-gray-300">"The process was so easy, and the team was super responsive."</p>
-          <p class="text-gray-900 font-semibold mt-2 dark:text-gray-100">Michael R., Developer</p>
-        </div>
-        <div class="bg-white p-6 rounded-2xl shadow-lg glass dark:bg-gray-700">
-          <p class="text-gray-600 italic dark:text-gray-300">"Affordable and professional. Highly recommend!"</p>
-          <p class="text-gray-900 font-semibold mt-2 dark:text-gray-100">Priya S., Entrepreneur</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Client Growth Graph Section -->
-  <section class="py-16 px-4">
-    <div class="max-w-5xl mx-auto">
-      <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12 dark:text-gray-100">Our Growing Community</h2>
-      <div class="bg-white p-6 rounded-2xl shadow-lg glass dark:bg-gray-700">
-        <p class="text-gray-600 mb-4 text-center dark:text-gray-300">See how our client base is expanding rapidly!</p>
-        <div class="graph-container">
-          <svg width="100%" height="100%" viewBox="0 0 300 150" preserveAspectRatio="xMidYMid meet">
-            <defs>
-              <linearGradient id="graphGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:1" />
-                <stop offset="100%" style="stop-color:#818CF8;stop-opacity:1" />
-              </linearGradient>
-            </defs>
-            <path class="graph-bar" stroke-dasharray="1000" stroke-dashoffset="1000" d="M20,130 L60,100 L100,80 L140,60 L180,50 L220,40 L260,20" />
-          </svg>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- About Service Section -->
-  <section class="py-16 px-4">
-    <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12 dark:text-gray-100">Why Choose Nexlify Studio?</h2>
-    <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
-      <div class="bg-white p-6 rounded-2xl shadow-lg card glass dark:bg-gray-700">
-        <h3 class="text-xl font-semibold text-gray-900 mb-2 dark:text-gray-100">Easy Submission</h3>
-        <p class="text-gray-600 dark:text-gray-300">Share your details via a simple form.</p>
-      </div>
-      <div class="bg-white p-6 rounded-2xl shadow-lg card glass dark:bg-gray-700">
-        <h3 class="text-xl font-semibold text-gray-900 mb-2 dark:text-gray-100">Preview First</h3>
-        <p class="text-gray-600 dark:text-gray-300">See your website live before paying.</p>
-      </div>
-      <div class="bg-white p-6 rounded-2xl shadow-lg card glass dark:bg-gray-700">
-        <h3 class="text-xl font-semibold text-gray-900 mb-2 dark:text-gray-100">Affordable Pricing</h3>
-        <p class="text-gray-600 dark:text-gray-300">Custom websites at prices you’ll love.</p>
-      </div>
-      <div class="bg-white p-6 rounded-2xl shadow-lg card glass dark:bg-gray-700">
-        <h3 class="text-xl font-semibold text-gray-900 mb-2 dark:text-gray-100">Free Hosting</h3>
-        <p class="text-gray-600 dark:text-gray-300">Your website hosted for free, forever.</p>
-      </div>
-    </div>
-    <p class="text-center text-gray-600 mt-8 dark:text-gray-300">100% Satisfaction Guarantee – Pay only when you’re happy!</p>
-  </section>
-
-  <!-- How It Works Section -->
   <section class="py-16 px-4 bg-gray-50 dark:bg-gray-900">
-    <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12 dark:text-gray-100">How It Works</h2>
-    <div class="max-w-3xl mx-auto">
-      <div class="flex items-start mb-8">
-        <div class="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-full flex items-center justify-center mr-4">1</div>
-        <div>
-          <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-100">Submit Your Details</h3>
-          <p class="text-gray-600 dark:text-gray-300">Fill out our form with your preferences.</p>
+    <div class="max-w-5xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12 dark:text-gray-100">Trusted by Clients</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="card bg-white p-6 rounded-2xl shadow-lg glass dark:bg-gray-700">
+          <p class="text-gray-600 dark:text-gray-300">"Nexlify delivered a stunning website in just two weeks!"</p>
+          <p class="mt-4 font-semibold text-gray-900 dark:text-gray-100">– Jane D.</p>
+        </div>
+        <div class="card bg-white p-6 rounded-2xl shadow-lg glass dark:bg-gray-700">
+          <p class="text-gray-600 dark:text-gray-300">"The preview-first model gave me total confidence."</p>
+          <p class="mt-4 font-semibold text-gray-900 dark:text-gray-100">– Mark S.</p>
+        </div>
+        <div class="card bg-white p-6 rounded-2xl shadow-lg glass dark:bg-gray-700">
+          <p class="text-gray-600 dark:text-gray-300">"Affordable and professional – highly recommend!"</p>
+          <p class="mt-4 font-semibold text-gray-900 dark:text-gray-100">– Sarah L.</p>
         </div>
       </div>
-      <div class="flex items-start mb-8">
-        <div class="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-full flex items-center justify-center mr-4">2</div>
-        <div>
-          <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-100">Preview Your Website</h3>
-          <p class="text-gray-600 dark:text-gray-300">Get a live link to review your site.</p>
+      <div class="text-center mt-12">
+        <p class="text-4xl font-bold text-blue-600 dark:text-blue-400"><span id="client-counter">0</span>+</p>
+        <p class="text-gray-600 dark:text-gray-300">Happy Clients</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Client Growth Graph -->
+  <section class="py-16 px-4 bg-gray-100 dark:bg-gray-800">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12 dark:text-gray-100">Our Community Growth</h2>
+      <div class="glass p-6 rounded-2xl shadow-lg dark:bg-gray-700">
+        <p class="text-gray-600 mb-4 text-center dark:text-gray-300">Client growth over the past year.</p>
+        <svg width="100%" height="200" viewBox="0 0 300 150" preserveAspectRatio="xMidYMid meet">
+          <defs>
+            <linearGradient id="graphGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#818CF8;stop-opacity:1" />
+            </linearGradient>
+          </defs>
+          <path class="graph-line" stroke-dasharray="1000" stroke-dashoffset="1000" d="M20,130 L60,100 L100,80 L140,60 L180,50 L220,40 L260,20" />
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Service -->
+  <section class="py-16 px-4 bg-gray-50 dark:bg-gray-900">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12 dark:text-gray-100">Why Choose Nexlify?</h2>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div class="card bg-white p-6 rounded-2xl shadow-lg glass dark:bg-gray-700">
+          <h3 class="text-xl font-semibold text-gray-900 mb-2 dark:text-gray-100">Easy Submission</h3>
+          <p class="text-gray-600 dark:text-gray-300">Submit your details via a simple form.</p>
+        </div>
+        <div class="card bg-white p-6 rounded-2xl shadow-lg glass dark:bg-gray-700">
+          <h3 class="text-xl font-semibold text-gray-900 mb-2 dark:text-gray-100">Preview First</h3>
+          <p class="text-gray-600 dark:text-gray-300">Review your website before paying.</p>
+        </div>
+        <div class="card bg-white p-6 rounded-2xl shadow-lg glass dark:bg-gray-700">
+          <h3 class="text-xl font-semibold text-gray-900 mb-2 dark:text-gray-100">Affordable Pricing</h3>
+          <p class="text-gray-600 dark:text-gray-300">Custom websites starting at $99.</p>
+        </div>
+        <div class="card bg-white p-6 rounded-2xl shadow-lg glass dark:bg-gray-700">
+          <h3 class="text-xl font-semibold text-gray-900 mb-2 dark:text-gray-100">Free Hosting</h3>
+          <p class="text-gray-600 dark:text-gray-300">No extra cost for hosting your site.</p>
         </div>
       </div>
-      <div class="flex items-start mb-8">
-        <div class="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-full flex items-center justify-center mr-4">3</div>
-        <div>
-          <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-100">Secure Payment</h3>
-          <p class="text-gray-600 dark:text-gray-300">Pay only after you’re satisfied.</p>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="py-16 px-4 bg-gray-100 dark:bg-gray-800">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12 dark:text-gray-100">How It Works</h2>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div class="text-center">
+          <div class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-600 text-white font-bold mx-auto mb-4">1</div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-2 dark:text-gray-100">Submit</h3>
+          <p class="text-gray-600 dark:text-gray-300">Fill out our form with your requirements.</p>
         </div>
-      </div>
-      <div class="flex items-start mb-8">
-        <div class="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-full flex items-center justify-center mr-4">4</div>
-        <div>
-          <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-100">Finalize & Launch</h3>
-          <p class="text-gray-600 dark:text-gray-300">Request edits and launch your site.</p>
+        <div class="text-center">
+          <div class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-600 text-white font-bold mx-auto mb-4">2</div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-2 dark:text-gray-100">Preview</h3>
+          <p class="text-gray-600 dark:text-gray-300">Review your website design.</p>
+        </div>
+        <div class="text-center">
+          <div class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-600 text-white font-bold mx-auto mb-4">3</div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-2 dark:text-gray-100">Pay</h3>
+          <p class="text-gray-600 dark:text-gray-300">Pay only when satisfied.</p>
+        </div>
+        <div class="text-center">
+          <div class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-600 text-white font-bold mx-auto mb-4">4</div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-2 dark:text-gray-100">Launch</h3>
+          <p class="text-gray-600 dark:text-gray-300">Your website goes live!</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Form Section -->
-  <section id="form" class="py-16 px-4">
-    <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12 dark:text-gray-100">Start Your Website Today</h2>
-    <div class="max-w-3xl mx-auto bg-white p-8 rounded-2xl shadow-lg glass dark:bg-gray-700">
-      <p class="text-gray-600 mb-4 text-center dark:text-gray-300">Tell us what you want, and we’ll build your custom website.</p>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSctOKZZo4GYfDTniI5YTMBdBGmVhtEXimpxJHl2M1LIxZiQ0w/viewform?usp=dialog" target="_blank" rel="noopener noreferrer" class="block text-center bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-3 px-6 rounded-full shadow-lg glass hover:from-blue-700 hover:to-indigo-700 transition duration-300">Fill Form</a>
+  <section id="form" class="py-16 px-4 bg-gray-50 dark:bg-gray-900">
+    <div class="max-w-5xl mx-auto text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6 dark:text-gray-100">Get Started Today</h2>
+      <p class="text-gray-600 mb-8 dark:text-gray-300">Submit your details, and we’ll create a custom website for you.</p>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSctOKZZo4GYfDTniI5YTMBdBGmVhtEXimpxJHl2M1LIxZiQ0w/viewform?usp=dialog" target="_blank" rel="noopener noreferrer" class="inline-block bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-3 px-6 rounded-full shadow-lg glass hover:from-blue-700 hover:to-indigo-700 transition duration-300">Submit Your Details</a>
     </div>
   </section>
 
-  <!-- Payment Process Section -->
+  <!-- Payment Process -->
   <section class="py-16 px-4 bg-gray-100 dark:bg-gray-800">
-    <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12 dark:text-gray-100">How Payment Works</h2>
     <div class="max-w-5xl mx-auto">
-      <p class="text-gray-600 mb-8 text-center dark:text-gray-300">We make payment simple and secure. Preview your website, and we’ll send you payment details via email. Pay only when you’re 100% satisfied.</p>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div class="bg-white p-6 rounded-2xl shadow-lg glass dark:bg-gray-700">
-          <h3 class="text-xl font-semibold text-gray-900 mb-2 dark:text-gray-100">Transparent Process</h3>
-          <p class="text-gray-600 dark:text-gray-300">No upfront costs. Pay after you approve your website.</p>
-        </div>
-        <div class="bg-white p-6 rounded-2xl shadow-lg glass dark:bg-gray-700">
-          <h3 class="text-xl font-semibold text-gray-900 mb-2 dark:text-gray-100">Secure Payments</h3>
-          <p class="text-gray-600 dark:text-gray-300">Choose from secure options tailored to you.</p>
-        </div>
+      <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12 dark:text-gray-100">Our Payment Process</h2>
+      <div class="glass p-6 rounded-2xl shadow-lg dark:bg-gray-700">
+        <p class="text-gray-600 mb-4 dark:text-gray-300">No upfront costs! Preview your website, make edits, and pay only when you're satisfied. Our pricing is tailored to your needs, starting at just $99.</p>
       </div>
     </div>
   </section>
 
-  <!-- About Section -->
-  <section class="py-16 px-4">
-    <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12 dark:text-gray-100">About Nexlify Studio</h2>
-    <div class="max-w-3xl mx-auto bg-white p-8 rounded-2xl shadow-lg glass dark:bg-gray-700">
-      <p class="text-gray-600 text-center dark:text-gray-300">Universal Developer Team developed this website and they are founders of Nexlify Studio. We’re passionate about crafting futuristic, user-friendly websites that empower your vision.</p>
+  <!-- About Nexlify -->
+  <section class="py-16 px-4 bg-gray-50 dark:bg-gray-900">
+    <div class="max-w-5xl mx-auto text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6 dark:text-gray-100">About Nexlify Studio</h2>
+      <p class="text-gray-600 mb-8 dark:text-gray-300">We’re the Universal Developer Team, passionate about crafting affordable, high-quality websites. Let us bring your vision to life!</p>
     </div>
   </section>
 
-  <!-- Contact Section -->
-  <section id="contact" class="py-16 px-4">
-    <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12 dark:text-gray-100">Contact Us</h2>
-    <div class="max-w-3xl mx-auto text-center">
-      <div class="flex justify-center space-x-8 mb-4">
-        <a href="mailto:universaldeveloper07@gmail.com" class="text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400">
-          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-        </a>
-      </div>
-      <p class="text-gray-600 dark:text-gray-300">We reply fast – let’s build your website today!</p>
+  <!-- Contact -->
+  <section id="contact" class="py-16 px-4 bg-gray-100 dark:bg-gray-800">
+    <div class="max-w-5xl mx-auto text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6 dark:text-gray-100">Contact Us</h2>
+      <p class="text-gray-600 mb-8 dark:text-gray-300">Have questions? Reach out to us!</p>
+      <a href="mailto:universaldeveloperteam@gmail.com" class="inline-block text-blue-600 dark:text-blue-400 hover:underline">
+        <svg class="w-6 h-6 inline-block mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l9 6 9-6m0 10V8l-9 6-9-6v10z"></path></svg>
+        universaldeveloperteam@gmail.com
+      </a>
     </div>
   </section>
 
@@ -287,22 +283,6 @@
       moonIcon.classList.toggle('hidden');
     });
 
-    // Optimized Particles.js
-    window.particlesJS && window.particlesJS('particles-js', {
-      particles: {
-        number: { value: 30, density: { enable: true, value_area: 800 } },
-        color: { value: '#e5e7eb' },
-        shape: { type: 'circle' },
-        opacity: { value: 0.5, random: true },
-        size: { value: 3, random: true },
-        line_linked: { enable: false },
-        move: { enable: true, speed: 1, direction: 'none', random: true }
-      },
-      interactivity: {
-        events: { onhover: { enable: true, mode: 'repulse' } }
-      }
-    });
-
     // Menu Toggle
     function toggleMenu() {
       const menu = document.getElementById('menu');
@@ -310,15 +290,6 @@
       menu.classList.toggle('menu-open');
       hamburger.classList.toggle('open');
     }
-
-    // Client Counter Animation
-    let count = 0;
-    const target = 327;
-    const counter = setInterval(() => {
-      if (count >= target) clearInterval(counter);
-      document.getElementById('client-counter').textContent = count;
-      count += 10;
-    }, 100);
 
     // Scroll Reveal Animation
     const sections = document.querySelectorAll('section');
@@ -328,6 +299,38 @@
       });
     }, { threshold: 0.1 });
     sections.forEach(section => observer.observe(section));
+
+    // Client Counter Animation
+    const clientCounter = document.getElementById('client-counter');
+    let count = 0;
+    const target = 327;
+    const counter = setInterval(() => {
+      count += 5;
+      clientCounter.textContent = count;
+      if (count >= target) {
+        clientCounter.textContent = target;
+        clearInterval(counter);
+      }
+    }, 50);
+
+    // Particles.js
+    particlesJS('particles-js', {
+      particles: {
+        number: { value: 50, density: { enable: true, value_area: 800 } },
+        color: { value: '#ffffff' },
+        shape: { type: 'circle' },
+        opacity: { value: 0.5, random: true },
+        size: { value: 3, random: true },
+        line_linked: { enable: true, distance: 150, color: '#ffffff', opacity: 0.4, width: 1 },
+        move: { enable: true, speed: 2, direction: 'none', random: true, straight: false, out_mode: 'out', bounce: false }
+      },
+      interactivity: {
+        detect_on: 'canvas',
+        events: { onhover: { enable: true, mode: 'grab' }, onclick: { enable: true, mode: 'push' }, resize: true },
+        modes: { grab: { distance: 200, line_linked: { opacity: 1 } }, push: { particles_nb: 4 } }
+      },
+      retina_detect: true
+    });
   </script>
 </body>
-</html>
+            </html>
