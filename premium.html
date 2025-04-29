@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Premium Features - Nexlify Studio</title>
-  <meta name="description" content="Explore premium plans at Nexlify Studio for advanced website customization, unlimited edits, and priority support.">
+  <meta name="description" content="Discover Nexlify Studio's premium website development plans with advanced features and exclusive benefits.">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
@@ -14,7 +14,7 @@
     .light .glass { background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.3); }
     .dark .glass { background: rgba(31, 41, 55, 0.2); backdrop-filter: blur(10px); border: 1px solid rgba(55, 65, 81, 0.3); }
     .card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
-    .card:hover { transform: scale(1.02); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); }
+    .card:hover { transform: scale(1.05); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); }
     .menu { 
       position: fixed; 
       top: 0; 
@@ -43,7 +43,7 @@
     section { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
     section.visible { opacity: 1; transform: translateY(0); }
     .light .text-gray-600 { color: #4b5563; }
-    .dark .text-gray-600 { color: #d1d5db; }
+    .dark .text-gray-600 { color: #e5e7eb; }
     .light .bg-gray-100 { background: #f3f4f6; }
     .dark .bg-gray-100 { background: #374151; }
     .light .bg-gray-50 { background: #f9fafb; }
@@ -52,6 +52,8 @@
     .dark .bg-white { background: #374151; }
     .light .text-gray-900 { color: #111827; }
     .dark .text-gray-900 { color: #f9fafb; }
+    .light p, .light h1, .light h2, .light h3 { color: #111827; }
+    .dark p, .dark h1, .dark h2, .dark h3 { color: #f9fafb; }
     .menu ul li a { 
       display: block; 
       padding: 12px 16px; 
@@ -59,6 +61,19 @@
     }
     .menu ul li a:hover { transform: translateX(8px); color: #3B82F6; }
     .dark .menu ul li a:hover { color: #60A5FA; }
+    .pulse { animation: pulse 2s infinite; }
+    @keyframes pulse { 
+      0% { transform: scale(1); box-shadow: 0 0 10px rgba(59, 130, 246, 0.5); }
+      50% { transform: scale(1.02); box-shadow: 0 0 20px rgba(59, 130, 246, 0.7); }
+      100% { transform: scale(1); box-shadow: 0 0 10px rgba(59, 130, 246, 0.5); }
+    }
+    .benefit-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .benefit-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); }
+    .cta-button { 
+      background: linear-gradient(135deg, #3B82F6, #818CF8); 
+      transition: transform 0.3s ease, box-shadow 0.3s ease; 
+    }
+    .cta-button:hover { transform: scale(1.05); box-shadow: 0 10px 20px rgba(59, 130, 246, 0.5); }
   </style>
 </head>
 <body>
@@ -67,7 +82,7 @@
     <div class="glass p-4 flex justify-between items-center">
       <div class="flex items-center">
         <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMjAgNEMxMC42MDg2IDQgNCAxMC42MDg2IDQgMjBDNCAyOS4zOTE0IDEwLjYwODYgMzYgMjAgMzZDMjkuMzkxNCAzNiAzNiAyOS4zOTE0IDM2IDIwQzM2IDEwLjYwODYgMjkuMzkxNCA0IDIwIDRaIiBmaWxsPSIjM0I4N0ZDIi8+PHBhdGggZD0iTTE4LjUgMjJIMjQuNVYyOEgxOC41VjIyWiIgZmlsbD0iI0ZGRkZGRiIvPjxwYXRoIGQ9Ik0xOC41IDEySDE0LjVWMThIMTguNVYxMloiIGZpbGw9IiNGRkZGRkYiLz48cGF0aCBkPSJNMjQuNSAxOEgyOC41VjEySDI0LjVWMThaIiBmaWxsPSIjRkZGRkZGIi8+PC9zdmc+" alt="Nexlify Studio Logo" class="h-10">
-        <span class="ml-2 text-xl font-bold text-gray-900 dark:text-gray-100">Nexlify Studio</span>
+        <span class="ml-2 text-xl font-bold text-gray-900 dark:text-gray-100">Nexlify気がStudio</span>
       </div>
       <div class="flex items-center space-x-4">
         <button id="theme-toggle" class="text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400">
@@ -93,41 +108,75 @@
     </div>
   </div>
 
-  <!-- Premium Features Section -->
+  <!-- Premium Section -->
   <section class="py-16 px-4 bg-gray-50 dark:bg-gray-900">
     <div class="max-w-5xl mx-auto">
-      <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12 dark:text-gray-100">Premium Features</h2>
-      <p class="text-gray-600 mb-8 text-center dark:text-gray-300">Upgrade to premium for advanced customization and exclusive benefits. Pricing is based on your website’s size:</p>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="bg-white p-6 rounded-2xl shadow-lg glass dark:bg-gray-700">
-          <h3 class="text-xl font-semibold text-gray-900 mb-2 dark:text-gray-100">Small Website</h3>
-          <p class="text-gray-600 dark:text-gray-300">Perfect for portfolios or personal pages. Affordable pricing.</p>
-        </div>
-        <div class="bg-white p-6 rounded-2xl shadow-lg glass dark:bg-gray-700">
-          <h3 class="text-xl font-semibold text-gray-900 mb-2 dark:text-gray-100">Medium Website</h3>
-          <p class="text-gray-600 dark:text-gray-300">Ideal for blogs or small businesses. Balanced features.</p>
-        </div>
-        <div class="bg-white p-6 rounded-2xl shadow-lg glass dark:bg-gray-700">
-          <h3 class="text-xl font-semibold text-gray-900 mb-2 dark:text-gray-100">Large Website</h3>
-          <p class="text-gray-600 dark:text-gray-300">For complex sites with advanced functionality.</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-6 dark:text-gray-100">Unlock Premium Power</h2>
+      <p class="text-gray-600 mb-12 text-center dark:text-gray-300">Elevate your website with exclusive features and free server hosting.</p>
+
+      <!-- Server Cost Metric -->
+      <div class="mb-12 text-center">
+        <div class="glass p-6 rounded-2xl shadow-lg pulse max-w-sm mx-auto">
+          <h3 class="text-2xl font-semibold text-gray-900 dark:text-gray-100">Server Cost</h3>
+          <p class="text-4xl font-bold text-blue-600 dark:text-blue-400">$0 Forever</p>
+          <p class="text-gray-600 dark:text-gray-300">Free hosting for all websites, no hidden fees.</p>
         </div>
       </div>
-      <div class="mt-8 text-center">
-        <h3 class="text-xl font-semibold text-gray-900 mb-4 dark:text-gray-100">Premium Benefits</h3>
-        <ul class="text-gray-600 space-y-2 dark:text-gray-300">
-          <li>Advanced Customization Options</li>
-          <li>Unlimited Edits</li>
-          <li>Priority Support</li>
-          <li>Exclusive Design Features</li>
-        </ul>
-        <button class="mt-6 bg-gray-400 text-white py-3 px-6 rounded-full shadow-lg glass cursor-not-allowed" onclick="showNotice()">Buy Now</button>
-        <div id="notice" class="hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-          <div class="bg-white p-6 rounded-2xl glass text-center dark:bg-gray-700">
-            <p class="text-gray-900 font-semibold dark:text-gray-100">Under Development</p>
-            <p class="text-gray-600 mt-2 dark:text-gray-300">Premium features are coming soon!</p>
-            <button class="mt-4 bg-blue-600 text-white py-2 px-4 rounded-full" onclick="hideNotice()">Close</button>
+
+      <!-- Premium Plans -->
+      <h3 class="text-2xl font-semibold text-center text-gray-900 mb-8 dark:text-gray-100">Choose Your Plan</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        <div class="benefit-card glass p-6 rounded-2xl shadow-lg dark:bg-gray-700">
+          <h4 class="text-xl font-semibold text-gray-900 mb-2 dark:text-gray-100">Small Website</h4>
+          <p class="text-gray-600 dark:text-gray-300">From $99 – Perfect for portfolios or personal pages.</p>
+        </div>
+        <div class="benefit-card glass p-6 rounded-2xl shadow-lg dark:bg-gray-700">
+          <h4 class="text-xl font-semibold text-gray-900 mb-2 dark:text-gray-100">Medium Website</h4>
+          <p class="text-gray-600 dark:text-gray-300">From $199 – Ideal for blogs or small businesses.</p>
+        </div>
+        <div class="benefit-card glass p-6 rounded-2xl shadow-lg dark:bg-gray-700">
+          <h4 class="text-xl font-semibold text-gray-900 mb-2 dark:text-gray-100">Large Website</h4>
+          <p class="text-gray-600 dark:text-gray-300">From $499 – For complex sites with deep features.</p>
+        </div>
+      </div>
+
+      <!-- Premium Benefits -->
+      <h3 class="text-2xl font-semibold text-center text-gray-900 mb-8 dark:text-gray-100">Premium Subscription Benefits</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+        <div class="benefit-card glass p-6 rounded-2xl shadow-lg dark:bg-gray-700 flex items-start">
+          <svg class="w-6 h-6 text-blue-600 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+          <div>
+            <h4 class="text-xl font-semibold text-gray-900 dark:text-gray-100">Unlimited Changes</h4>
+            <p class="text-gray-600 dark:text-gray-300">Edit your website anytime, no extra cost.</p>
           </div>
         </div>
+        <div class="benefit-card glass p-6 rounded-2xl shadow-lg dark:bg-gray-700 flex items-start">
+          <svg class="w-6 h-6 text-blue-600 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+          <div>
+            <h4 class="text-xl font-semibold text-gray-900 dark:text-gray-100">3rd Website Free</h4>
+            <p class="text-gray-600 dark:text-gray-300">Order 2 websites, get the 3rd free (subscribers only).</p>
+          </div>
+        </div>
+        <div class="benefit-card glass p-6 rounded-2xl shadow-lg dark:bg-gray-700 flex items-start">
+          <svg class="w-6 h-6 text-blue-600 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+          <div>
+            <h4 class="text-xl font-semibold text-gray-900 dark:text-gray-100">Priority Support</h4>
+            <p class="text-gray-600 dark:text-gray-300">Fast responses and dedicated assistance.</p>
+          </div>
+        </div>
+        <div class="benefit-card glass p-6 rounded-2xl shadow-lg dark:bg-gray-700 flex items-start">
+          <svg class="w-6 h-6 text-blue-600 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+          <div>
+            <h4 class="text-xl font-semibold text-gray-900 dark:text-gray-100">Custom Pricing</h4>
+            <p class="text-gray-600 dark:text-gray-300">Based on website size and feature depth.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="text-center">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSctOKZZo4GYfDTniI5YTMBdBGmVhtEXimpxJHl2M1LIxZiQ0w/viewform?usp=dialog" target="_blank" rel="noopener noreferrer" class="inline-block cta-button text-white py-4 px-8 rounded-full shadow-lg glass text-lg font-semibold">Claim Free Server Now</a>
+        <p class="text-gray-600 mt-4 dark:text-gray-300">Start building your dream website today!</p>
       </div>
     </div>
   </section>
@@ -165,14 +214,6 @@
       hamburger.classList.toggle('open');
     }
 
-    // Premium Notice
-    function showNotice() {
-      document.getElementById('notice').classList.remove('hidden');
-    }
-    function hideNotice() {
-      document.getElementById('notice').classList.add('hidden');
-    }
-
     // Scroll Reveal Animation
     const sections = document.querySelectorAll('section');
     const observer = new IntersectionObserver((entries) => {
@@ -183,4 +224,4 @@
     sections.forEach(section => observer.observe(section));
   </script>
 </body>
-</html>
+  </html>
