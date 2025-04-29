@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Demo 1: iOS Elegance - Nexlify Studio</title>
-  <meta name="description" content="A stunning iOS-inspired website demo showcasing Nexlify Studio's design capabilities.">
+  <title>iOS Elegance Demo - Nexlify Studio</title>
+  <meta name="description" content="Experience Nexlify Studio's iOS Elegance demo with vibrant gradients, glassmorphism, and smooth animations.">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
@@ -43,7 +43,7 @@
     section { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
     section.visible { opacity: 1; transform: translateY(0); }
     .light .text-gray-600 { color: #4b5563; }
-    .dark .text-gray-600 { color: #d1d5db; }
+    .dark .text-gray-600 { color: #e5e7eb; }
     .light .bg-gray-100 { background: #f3f4f6; }
     .dark .bg-gray-100 { background: #374151; }
     .light .bg-gray-50 { background: #f9fafb; }
@@ -52,6 +52,8 @@
     .dark .bg-white { background: #374151; }
     .light .text-gray-900 { color: #111827; }
     .dark .text-gray-900 { color: #f9fafb; }
+    .light p, .light h1, .light h2, .light h3 { color: #111827; }
+    .dark p, .dark h1, .dark h2, .dark h3 { color: #f9fafb; }
     .menu ul li a { 
       display: block; 
       padding: 12px 16px; 
@@ -59,7 +61,38 @@
     }
     .menu ul li a:hover { transform: translateX(8px); color: #3B82F6; }
     .dark .menu ul li a:hover { color: #60A5FA; }
-    .gradient-bg { background: linear-gradient(135deg, #3B82F6, #818CF8); }
+    .metric-card { 
+      transition: transform 0.3s ease, box-shadow 0.3s ease; 
+      animation: glassFade 1s ease; 
+    }
+    .metric-card:hover { 
+      transform: translateY(-5px); 
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); 
+    }
+    @keyframes glassFade { 
+      from { opacity: 0; backdrop-filter: blur(0); } 
+      to { opacity: 1; backdrop-filter: blur(10px); } 
+    }
+    .graph-container { width: 100%; height: 200px; }
+    .graph-bar { fill: none; stroke: url(#graphGradient); stroke-width: 4; animation: drawGraph 2s ease-in-out forwards; }
+    @keyframes drawGraph { 
+      0% { stroke-dashoffset: 1000; } 
+      100% { stroke-dashoffset: 0; } 
+    }
+    .hero-image { 
+      background-size: cover; 
+      background-position: center; 
+      position: relative; 
+    }
+    .hero-overlay { 
+      position: absolute; 
+      top: 10px; 
+      left: 10px; 
+      background: rgba(255, 255, 255, 0.3); 
+      backdrop-filter: blur(10px); 
+      padding: 8px 16px; 
+      border-radius: 12px; 
+    }
   </style>
 </head>
 <body>
@@ -95,7 +128,10 @@
   </div>
 
   <!-- Hero Section -->
-  <section class="relative min-h-screen flex items-center justify-center gradient-bg">
+  <section class="relative min-h-screen flex items-center justify-center hero-image" style="background-image: url('ios-demo-bg.jpg')">
+    <div class="hero-overlay glass">
+      <p class="text-gray-900 font-semibold dark:text-gray-100">Demo Website</p>
+    </div>
     <div class="text-center z-10 px-4">
       <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">iOS Elegance Demo</h1>
       <p class="text-lg md:text-xl text-gray-200 mb-8">Experience a sleek, vibrant website with peak iOS aesthetics.</p>
@@ -103,20 +139,58 @@
     </div>
   </section>
 
-  <!-- Features Section -->
+  <!-- Metrics Section -->
   <section class="py-16 px-4 bg-gray-50 dark:bg-gray-900">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12 dark:text-gray-100">Our Capabilities</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        <div class="metric-card glass p-6 rounded-2xl shadow-lg dark:bg-gray-700">
+          <h3 class="text-xl font-semibold text-gray-900 mb-2 dark:text-gray-100">Design Speed</h3>
+          <p class="text-3xl font-bold text-blue-600 dark:text-blue-400"><span id="design-counter">0</span> Days</p>
+          <p class="text-gray-600 dark:text-gray-300">Lightning-fast delivery.</p>
+        </div>
+        <div class="metric-card glass p-6 rounded-2xl shadow-lg dark:bg-gray-700">
+          <h3 class="text-xl font-semibold text-gray-900 mb-2 dark:text-gray-100">Client Satisfaction</h3>
+          <p class="text-3xl font-bold text-blue-600 dark:text-blue-400"><span id="satisfaction-counter">0</span>%</p>
+          <p class="text-gray-600 dark:text-gray-300">Happy clients guaranteed.</p>
+        </div>
+        <div class="metric-card glass p-6 rounded-2xl shadow-lg dark:bg-gray-700">
+          <h3 class="text-xl font-semibold text-gray-900 mb-2 dark:text-gray-100">Uptime</h3>
+          <p class="text-3xl font-bold text-blue-600 dark:text-blue-400"><span id="uptime-counter">0</span>%</p>
+          <p class="text-gray-600 dark:text-gray-300">Reliable hosting.</p>
+        </div>
+      </div>
+      <div class="glass p-6 rounded-2xl shadow-lg dark:bg-gray-700">
+        <p class="text-gray-600 mb-4 text-center dark:text-gray-300">Our design performance over time.</p>
+        <div class="graph-container">
+          <svg width="100%" height="100%" viewBox="0 0 300 150" preserveAspectRatio="xMidYMid meet">
+            <defs>
+              <linearGradient id="graphGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#818CF8;stop-opacity:1" />
+              </linearGradient>
+            </defs>
+            <path class="graph-bar" stroke-dasharray="1000" stroke-dashoffset="1000" d="M20,130 L60,100 L100,80 L140,60 L180,50 L220,40 L260,20" />
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="py-16 px-4 bg-gray-100 dark:bg-gray-800">
     <div class="max-w-5xl mx-auto">
       <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12 dark:text-gray-100">Stunning iOS Features</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="card bg-white p-6 rounded-2xl shadow-lg glass dark:bg-gray-700">
+        <div class="card glass p-6 rounded-2xl shadow-lg dark:bg-gray-700">
           <h3 class="text-xl font-semibold text-gray-900 mb-2 dark:text-gray-100">Vibrant Gradients</h3>
           <p class="text-gray-600 dark:text-gray-300">Eye-catching blue-indigo gradients for a modern look.</p>
         </div>
-        <div class="card bg-white p-6 rounded-2xl shadow-lg glass dark:bg-gray-700">
+        <div class="card glass p-6 rounded-2xl shadow-lg dark:bg-gray-700">
           <h3 class="text-xl font-semibold text-gray-900 mb-2 dark:text-gray-100">Smooth Animations</h3>
           <p class="text-gray-600 dark:text-gray-300">Fluid transitions and hover effects for a premium feel.</p>
         </div>
-        <div class="card bg-white p-6 rounded-2xl shadow-lg glass dark:bg-gray-700">
+        <div class="card glass p-6 rounded-2xl shadow-lg dark:bg-gray-700">
           <h3 class="text-xl font-semibold text-gray-900 mb-2 dark:text-gray-100">Glassmorphism</h3>
           <p class="text-gray-600 dark:text-gray-300">Translucent cards with blur for a sleek iOS aesthetic.</p>
         </div>
@@ -165,6 +239,26 @@
       });
     }, { threshold: 0.1 });
     sections.forEach(section => observer.observe(section));
+
+    // Metric Counter Animation
+    const animateCounter = (id, target, unit, duration) => {
+      let count = 0;
+      const increment = target / (duration / 50);
+      const counter = setInterval(() => {
+        count += increment;
+        if (count >= target) {
+          count = target;
+          clearInterval(counter);
+        }
+        document.getElementById(id).textContent = Math.round(count) + unit;
+      }, 50);
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      animateCounter('design-counter', 7, '', 2000);
+      animateCounter('satisfaction-counter', 98, '', 2000);
+      animateCounter('uptime-counter', 99.9, '', 2000);
+    });
   </script>
 </body>
-</html>
+  </html>
