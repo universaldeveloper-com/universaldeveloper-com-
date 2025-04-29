@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Demo 3: Cyberpunk Future - Nexlify Studio</title>
-  <meta name="description" content="A futuristic cyberpunk website demo showcasing Nexlify Studio's creative design capabilities.">
+  <title>Cyberpunk Future Demo - Nexlify Studio</title>
+  <meta name="description" content="Step into Nexlify Studio's Cyberpunk Future demo with holographic effects and futuristic design.">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
@@ -14,7 +14,7 @@
     .light .glass { background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.3); }
     .dark .glass { background: rgba(31, 41, 55, 0.2); backdrop-filter: blur(10px); border: 1px solid rgba(55, 65, 81, 0.3); }
     .card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
-    .card:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(236, 72, 153, 0.5); }
+    .card:hover { transform: scale(1.05); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); }
     .menu { 
       position: fixed; 
       top: 0; 
@@ -43,7 +43,7 @@
     section { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
     section.visible { opacity: 1; transform: translateY(0); }
     .light .text-gray-600 { color: #4b5563; }
-    .dark .text-gray-600 { color: #d1d5db; }
+    .dark .text-gray-600 { color: #e5e7eb; }
     .light .bg-gray-100 { background: #f3f4f6; }
     .dark .bg-gray-100 { background: #374151; }
     .light .bg-gray-50 { background: #f9fafb; }
@@ -52,6 +52,8 @@
     .dark .bg-white { background: #374151; }
     .light .text-gray-900 { color: #111827; }
     .dark .text-gray-900 { color: #f9fafb; }
+    .light p, .light h1, .light h2, .light h3 { color: #111827; }
+    .dark p, .dark h1, .dark h2, .dark h3 { color: #f9fafb; }
     .menu ul li a { 
       display: block; 
       padding: 12px 16px; 
@@ -59,10 +61,73 @@
     }
     .menu ul li a:hover { transform: translateX(8px); color: #3B82F6; }
     .dark .menu ul li a:hover { color: #60A5FA; }
-    .cyberpunk-bg { background: linear-gradient(135deg, #1a1a3d, #2a2a5e); position: relative; overflow: hidden; }
-    .cyberpunk-bg::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle, rgba(236, 72, 153, 0.3), transparent); }
-    .neon-glow { text-shadow: 0 0 10px #EC4899, 0 0 20px #EC4899; }
-    .parallax { background-attachment: fixed; background-size: cover; background-position: center; }
+    .cyberpunk-bg { 
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e); 
+      position: relative; 
+      overflow: hidden; 
+      animation: bgShift 15s infinite linear; 
+    }
+    .cyberpunk-bg::before { 
+      content: ''; 
+      position: absolute; 
+      top: 0; 
+      left: 0; 
+      width: 100%; 
+      height: 100%; 
+      background: radial-gradient(circle, rgba(100, 255, 218, 0.3), transparent); 
+      animation: glowPulse 5s infinite ease-in-out; 
+    }
+    @keyframes bgShift { 
+      0% { background-position: 0% 50%; } 
+      50% { background-position: 100% 50%; } 
+      100% { background-position: 0% 50%; } 
+    }
+    @keyframes glowPulse { 
+      0% { opacity: 0.3; } 
+      50% { opacity: 0.6; } 
+      100% { opacity: 0.3; } 
+    }
+    .holo-card { 
+      background: linear-gradient(135deg, rgba(100, 255, 218, 0.2), rgba(147, 51, 234, 0.2)); 
+      transition: transform 0.3s ease, box-shadow 0.3s ease; 
+      animation: holoFade 1s ease; 
+    }
+    .holo-card:hover { 
+      transform: translateY(-5px); 
+      box-shadow: 0 10px 20px rgba(100, 255, 218, 0.5); 
+    }
+    @keyframes holoFade { 
+      from { opacity: 0; transform: scale(0.95); } 
+      to { opacity: 1; transform: scale(1); } 
+    }
+    .metric-card { 
+      transition: transform 0.3s ease, box-shadow 0.3s ease; 
+      animation: holoFade 1s ease; 
+    }
+    .metric-card:hover { 
+      transform: translateY(-5px); 
+      box-shadow: 0 10px 20px rgba(100, 255, 218, 0.5); 
+    }
+    .graph-container { width: 100%; height: 200px; }
+    .graph-bar { fill: none; stroke: url(#cyberGradient); stroke-width: 4; animation: drawGraph 2s ease-in-out forwards; }
+    @keyframes drawGraph { 
+      0% { stroke-dashoffset: 1000; } 
+      100% { stroke-dashoffset: 0; } 
+    }
+    .hero-image { 
+      background-size: cover; 
+      background-position: center; 
+      position: relative; 
+    }
+    .hero-overlay { 
+      position: absolute; 
+      top: 10px; 
+      left: 10px; 
+      background: rgba(255, 255, 255, 0.3); 
+      backdrop-filter: blur(10px); 
+      padding: 8px 16px; 
+      border-radius: 12px; 
+    }
   </style>
 </head>
 <body>
@@ -98,30 +163,71 @@
   </div>
 
   <!-- Hero Section -->
-  <section class="relative min-h-screen flex items-center justify-center cyberpunk-bg">
+  <section class="relative min-h-screen flex items-center justify-center cyberpunk-bg hero-image" style="background-image: url('cyberpunk-demo-bg.jpg')">
+    <div class="hero-overlay glass">
+      <p class="text-gray-900 font-semibold dark:text-gray-100">Demo Website</p>
+    </div>
     <div class="text-center z-10 px-4">
-      <h1 class="text-4xl md:text-6xl font-bold text-white mb-4 neon-glow">Cyberpunk Future Demo</h1>
-      <p class="text-lg md:text-xl text-gray-300 mb-8">Step into a neon-infused, futuristic world.</p>
-      <a href="index.html#form" class="inline-block bg-gradient-to-r from-pink-500 to-purple-600 text-white py-3 px-6 rounded-full shadow-lg glass hover:from-pink-600 hover:to-purple-700 transition duration-300">Get Your Website</a>
+      <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">Cyberpunk Future Demo</h1>
+      <p class="text-lg md:text-xl text-gray-300 mb-8">Step into a futuristic, immersive world.</p>
+      <a href="index.html#form" class="inline-block bg-gradient-to-r from-cyan-500 to-purple-600 text-white py-3 px-6 rounded-full shadow-lg glass hover:from-cyan-600 hover:to-purple-700 transition duration-300">Get Your Website</a>
+    </div>
+  </section>
+
+  <!-- Metrics Section -->
+  <section class="py-16 px-4 bg-gray-50 dark:bg-gray-900">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12 dark:text-gray-100">Futuristic Capabilities</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        <div class="metric-card glass p-6 rounded-2xl shadow-lg dark:bg-gray-700">
+          <h3 class="text-xl font-semibold text-gray-900 mb-2 dark:text-gray-100">Innovation Score</h3>
+          <p class="text-3xl font-bold text-cyan-500 dark:text-cyan-400"><span id="innovation-counter">0</span>%</p>
+          <p class="text-gray-600 dark:text-gray-300">Cutting-edge designs.</p>
+        </div>
+        <div class="metric-card glass p-6 rounded-2xl shadow-lg dark:bg-gray-700">
+          <h3 class="text-xl font-semibold text-gray-900 mb-2 dark:text-gray-100">Immersion</h3>
+          <p class="text-3xl font-bold text-cyan-500 dark:text-cyan-400"><span id="immersion-counter">0</span>%</p>
+          <p class="text-gray-600 dark:text-gray-300">Engaging user experiences.</p>
+        </div>
+        <div class="metric-card glass p-6 rounded-2xl shadow-lg dark:bg-gray-700">
+          <h3 class="text-xl font-semibold text-gray-900 mb-2 dark:text-gray-100">Future-Readiness</h3>
+          <p class="text-3xl font-bold text-cyan-500 dark:text-cyan-400"><span id="future-counter">0</span>%</p>
+          <p class="text-gray-600 dark:text-gray-300">Built for tomorrow.</p>
+        </div>
+      </div>
+      <div class="glass p-6 rounded-2xl shadow-lg dark:bg-gray-700">
+        <p class="text-gray-600 mb-4 text-center dark:text-gray-300">Our futuristic performance over time.</p>
+        <div class="graph-container">
+          <svg width="100%" height="100%" viewBox="0 0 300 150" preserveAspectRatio="xMidYMid meet">
+            <defs>
+              <linearGradient id="cyberGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" style="stop-color:#00FFE6;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#9333EA;stop-opacity:1" />
+              </linearGradient>
+            </defs>
+            <path class="graph-bar" stroke-dasharray="1000" stroke-dashoffset="1000" d="M20,130 L60,100 L100,80 L140,60 L180,50 L220,40 L260,20" />
+          </svg>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- Features Section -->
-  <section class="py-16 px-4 bg-gray-50 dark:bg-gray-900">
+  <section class="py-16 px-4 bg-gray-100 dark:bg-gray-800">
     <div class="max-w-5xl mx-auto">
-      <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12 dark:text-gray-100 neon-glow">Futuristic Features</h2>
+      <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12 dark:text-gray-100">Futuristic Features</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="card bg-white p-6 rounded-2xl shadow-lg glass dark:bg-gray-700">
-          <h3 class="text-xl font-semibold text-gray-900 mb-2 dark:text-gray-100 neon-glow">Neon Glows</h3>
-          <p class="text-gray-600 dark:text-gray-300">Vibrant neon effects for a bold aesthetic.</p>
+        <div class="holo-card glass p-6 rounded-2xl shadow-lg dark:bg-gray-700">
+          <h3 class="text-xl font-semibold text-gray-900 mb-2 dark:text-gray-100">Holographic Effects</h3>
+          <p class="text-gray-600 dark:text-gray-300">Dynamic visuals with a 2070-inspired holographic aesthetic.</p>
         </div>
-        <div class="card bg-white p-6 rounded-2xl shadow-lg glass dark:bg-gray-700">
-          <h3 class="text-xl font-semibold text-gray-900 mb-2 dark:text-gray-100 neon-glow">Parallax Scrolling</h3>
-          <p class="text-gray-600 dark:text-gray-300">Dynamic depth for an immersive experience.</p>
+        <div class="holo-card glass p-6 rounded-2xl shadow-lg dark:bg-gray-700">
+          <h3 class="text-xl font-semibold text-gray-900 mb-2 dark:text-gray-100">Dynamic Backgrounds</h3>
+          <p class="text-gray-600 dark:text-gray-300">Shifting gradients for an immersive cyberpunk vibe.</p>
         </div>
-        <div class="card bg-white p-6 rounded-2xl shadow-lg glass dark:bg-gray-700">
-          <h3 class="text-xl font-semibold text-gray-900 mb-2 dark:text-gray-100 neon-glow">Interactive Elements</h3>
-          <p class="text-gray-600 dark:text-gray-300">Engaging hover and click effects.</p>
+        <div class="holo-card glass p-6 rounded-2xl shadow-lg dark:bg-gray-700">
+          <h3 class="text-xl font-semibold text-gray-900 mb-2 dark:text-gray-100">Interactive UI</h3>
+          <p class="text-gray-600 dark:text-gray-300">Engaging elements optimized for futuristic interfaces.</p>
         </div>
       </div>
     </div>
@@ -168,6 +274,26 @@
       });
     }, { threshold: 0.1 });
     sections.forEach(section => observer.observe(section));
+
+    // Metric Counter Animation
+    const animateCounter = (id, target, unit, duration) => {
+      let count = 0;
+      const increment = target / (duration / 50);
+      const counter = setInterval(() => {
+        count += increment;
+        if (count >= target) {
+          count = target;
+          clearInterval(counter);
+        }
+        document.getElementById(id).textContent = Math.round(count) + unit;
+      }, 50);
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      animateCounter('innovation-counter', 92, '', 2000);
+      animateCounter('immersion-counter', 95, '', 2000);
+      animateCounter('future-counter', 98, '', 2000);
+    });
   </script>
 </body>
-</html>
+  </html>
